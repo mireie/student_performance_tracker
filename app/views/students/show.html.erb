@@ -1,6 +1,9 @@
 <h2><%= @student.first_name + " " + @student.last_name%></h2>
 
-<p id="notice"><%= notice %></p>
+<%= link_to 'Edit Student', edit_student_path(@student) %>
+<%= link_to 'Back to All Students', students_path %>
 
-<%= link_to 'Edit', edit_student_path(@student) %>
-<%= link_to 'Back', students_path %>
+<p id="notice"><%= notice %></p>
+<%= render :partial => "/quarterly_results/display_quarterly_results", :locals => {:student => @student}  %>
+
+

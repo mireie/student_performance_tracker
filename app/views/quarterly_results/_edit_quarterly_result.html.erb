@@ -1,10 +1,9 @@
-<h1>Edit student's quarterly results:</h1>
   <%= form_for [@student, @quarterly_result] do |form|%>
     <table class="table table-warning table-striped mt-3">
       <tbody>
         <tr>
           <td><%= form.label :date %></td>
-          <td><%= form.date_select :date, { :discard_day => true, :options_for_select => ([["January", 1], ["June", 6], ["September", 9]]) } %></td>
+          <td><%= form.date_select :date, { :discard_day => true } %></td>
         </tr>
         <tr>
           <td><%= form.label :ge, 'GE' %></td>

@@ -7,7 +7,7 @@
 <% if @students.any? %>
       <div class="row">
         <% @students.order(:last_name).each do |student| %>
-          <%= render :partial => "layouts/student_card", :locals => {:student => student} %>
+          <%= render :partial => "student_card", :locals => {:student => student} %>
         <% end %>
       </div>
     <% else %>
