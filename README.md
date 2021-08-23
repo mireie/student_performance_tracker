@@ -1,0 +1,38 @@
+# MVP
+* Models (Tests, Users (Admin/Teacher), Students)
+* Users // Any admin/teacher can add/read a student
+  * Admin (CRUD)
+  * Teacher (CR)
+* 4 Tests
+  * 3 top = quarterly // color code this to make it more visible?
+  * 1 bottom-left = biweekly
+* Views
+  * Student Single Display
+
+# MVP (Finished)
+* Quarterly test tables
+* DIBELS test tables
+* Student tables
+
+
+# Flex
+* Limiting teacher's view to own students (one-to-many)
+* Admin to add a new test suite
+* Add date range, trend line to graph
+* Add middle name to students? ID? (to make them unique in the database)
+* Update date entry within quarterlies to a drop-down selection
+
+https://cdn.discordapp.com/attachments/869663850100846603/877695496938987540/Image_8-17-21_at_10.17_PM.JPG 
+https://chartkick.com/
+https://shortcake.com/
+
+input form
+display view of score
+students have many tests
+
+
+
+Co-authored-by: Andrew Giang <giang184@gmail.com>
+Co-authored-by: Kristen Hopper <hopperdavis@gmail.com>
+Co-authored-by: Arthur Lee <meleearthur@gmail.com>
+Co-authored-by: Dave Lindqvist <lindqvist.dave@gmail.com>
