@@ -14,3 +14,16 @@
  *= require_self
  */
  @import 'bootstrap';
+
+ #user-info {
+  margin-left:auto;
+}
+
+.errors {
+  background-color: lightcoral;
+}
+
+td {
+  border: 1px solid black;
+  padding: 5px;
+}

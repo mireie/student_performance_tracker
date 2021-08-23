@@ -1,0 +1,58 @@
+<h1>Add student's quarterly results:</h1>
+  <%= form_for [@student, @quarterly_result] do |form|%>
+    <table class="table table-warning table-striped mt-3">
+      <tbody>
+        <tr>
+          <td><%= form.label :date %></td>
+          <td><%= form.date_select :date, { :discard_day => true, :options_for_select => ([["January", 1], ["June", 6], ["September", 9]]) } %></td>
+        </tr>
+        <tr>
+          <td><%= form.label :ge, 'GE' %></td>
+          <td><%= form.number_field :ge, min: 0, class: "form-control"  %></td>
+        </tr>
+        <tr>
+          <td><%= form.label :vocab_ge, 'Vocab GE' %></td>
+          <td><%= form.number_field :vocab_ge, min: 0, class: "form-control"  %></td>
+        </tr>
+        <tr>
+          <td><%= form.label :reading_comp_ge, 'Reading Comp. GE' %></td>
+          <td><%= form.number_field :reading_comp_ge, min: 0, class: "form-control"  %></td>
+        </tr>
+        <tr>
+          <td><%= form.label :lnf, 'LNF' %></td>
+          <td><%= form.number_field :lnf, min: 0, class: "form-control"  %></td>
+        </tr>
+        <tr>
+          <td><%= form.label :snf, 'SNF' %></td>
+          <td><%= form.number_field :snf, min: 0, class: "form-control"  %></td>
+        </tr>
+        <tr>
+          <td><%= form.label :nwf_cls, 'NWF - CLS' %></td>
+          <td><%= form.number_field :nwf_cls, min: 0, class: "form-control"  %></td>
+        </tr>
+        <tr>
+          <td><%= form.label :nwf_wrc, 'NWF - WRC' %></td>
+          <td><%= form.number_field :nwf_wrc, min: 0, class: "form-control"  %></td>
+        </tr>
+        <tr>
+          <td><%= form.label :wrf, 'WRF' %></td>
+          <td><%= form.number_field :wrf, min: 0, class: "form-control"  %></td>
+        </tr>
+        <tr>
+          <td><%= form.label :orf_grade_lvl, 'ORF Grade Level' %></td>
+          <td><%= form.number_field :orf_grade_lvl, min: 0, class: "form-control"  %></td>
+        </tr>
+        <tr>
+          <td><%= form.label :orf_cwpm, 'ORF CWPM' %></td>
+          <td><%= form.number_field :orf_cwpm, min: 0, class: "form-control"  %></td>
+        </tr>
+        <tr>
+          <td><%= form.label :orf_accuracy, 'ORF Accuracy' %></td>
+          <td><%= form.number_field :orf_accuracy, min: 0, class: "form-control"  %></td>
+        </tr>
+        <tr>
+          <td colspan="2"><%= form.submit class: "btn btn-primary" %></td>
+        </tr>
+      </tbody>
+    </table>
+  <% end %>

@@ -1,0 +1,26 @@
+<h1>Edit student's DIBELS results:</h1>
+  <%= form_for [@student, @dibels_result] do |form|%>
+    <table class="table table-warning table-striped mt-3">
+    <tbody>
+    <tr>
+        <td><%= form.label :date %></td>
+        <td><%= form.date_field :date, class: "form-control" %></td>
+    </tr>
+    <tr>
+        <td><%= form.label :grade %></td>
+        <td><%= form.number_field :grade, min: 0, class: "form-control" %></td>
+    </tr>
+    <tr>
+        <td><%= form.label :dibels, "DIBELS" %></td>
+        <td><%= form.number_field :dibels, min: 0, class: "form-control"  %></td>
+    </tr>
+    <tr>
+        <td><%= form.label :accuracy %></td>
+        <td><%= form.number_field :accuracy, min: 0, class: "form-control"  %></td>
+    </tr>
+    <tr>
+        <td colspan="2"><%= form.submit class: "btn btn-primary" %></td>
+    </tr>
+</tbody>
+    </table>
+  <% end %>

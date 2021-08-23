@@ -1,0 +1,31 @@
+<h1>Student: <%= @student.first_name %></h1>
+
+<p><%= link_to "Add a DIBELS Result", new_student_dibels_result_path, class: "btn btn-primary" %></p>
+
+<% if @dibels_results.any? %>
+<div class="table-responsive">
+    <table class="table table-striped mt-3">
+    <thead>
+    <tr>
+      <th scope="col">Date</th>
+      <th scope="col">Grade</th>
+      <th scope="col">DIBELS Score</th>
+      <th scope="col">Accuracy</th>
+    <tr>
+    </thead>
+    <tbody>
+    <% @dibels_results.each do |dibels_result| %>
+      <tr>
+        <th scope="row"><%= link_to dibels_result.date, edit_student_dibels_result_path(@student, dibels_result.id) %></th>
+        <td><%= dibels_result.grade %></td>
+        <td><%= dibels_result.dibels %></td>
+        <td><%= dibels_result.accuracy %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% else %>
+  <p>There are no DIBELS yet.</p>
+<% end %>
+

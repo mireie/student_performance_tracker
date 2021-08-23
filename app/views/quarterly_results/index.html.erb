@@ -1,0 +1,50 @@
+<h2><%= link_to "#{@student.first_name} #{@student.last_name}", @student %></h2>
+<p><%= link_to "Add a Quarterly Result", new_student_quarterly_result_path, class: "btn btn-primary" %></p>
+
+
+<% if @quarterly_results.any? %>
+<div class="table-responsive">
+    <table class="table table-striped mt-3">
+      <thead>
+        <tr>
+          <th class="table-light"></th>
+          <th class="table-info text-center">TOSWRF-2</th>
+          <th class="table-warning text-center" colspan="2">Gates-MacGinitie</th>
+          <th class="table-danger text-center" colspan="8">DIBELS</th>
+        </tr>
+        <tr>
+          <th class="table-light" scope="col">Date</th>
+          <th class="table-info" scope="col">GE</th>
+          <th class="table-warning" scope="col">Vocab GE</th>
+          <th class="table-warning" scope="col">Reading Comp. GE</th>
+          <th class="table-danger" scope="col">LNF</th>
+          <th class="table-danger" scope="col">SNF</th>
+          <th class="table-danger" scope="col">NWF-CLS</th>
+          <th class="table-danger" scope="col">NWF-WRC</th>
+          <th class="table-danger" scope="col">WRF</th>
+          <th class="table-danger" scope="col">ORF Grade Lvl.</th>
+          <th class="table-danger" scope="col">ORF CWPM</th>
+          <th class="table-danger" scope="col">ORF Accuracy</th>
+        </tr>
+      </thead>
+      <tbody>
+  <% @quarterly_results.each do |q| %>
+        <tr>
+          <th class="table-light" scope="row"><%= link_to q.date, edit_student_quarterly_result_path(@student, q.id) %></th>
+          <td class="table-info" ><%= q.ge %></td>
+          <td class="table-warning"><%= q.vocab_ge %></td>
+          <td class="table-warning"><%= q.reading_comp_ge %></td>
+          <td class="table-danger"><%= q.lnf %></td>
+          <td class="table-danger"><%= q.snf %></td>
+          <td class="table-danger"><%= q.nwf_cls %></td>
+          <td class="table-danger"><%= q.nwf_wrc %></td>
+          <td class="table-danger"><%= q.wrf %></td>
+          <td class="table-danger"><%= q.orf_grade_lvl %></td>
+          <td class="table-danger"><%= q.orf_cwpm %></td>
+          <td class="table-danger"><%= q.orf_accuracy %></td>
+        </tr>
+  <% end %>
+</tbody>
+</table>
+</div>
+<% end %>

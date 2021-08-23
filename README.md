@@ -21,6 +21,7 @@
 * Add date range, trend line to graph
 * Add middle name to students? ID? (to make them unique in the database)
 * Update date entry within quarterlies to a drop-down selection
+* Update table to look like THIS: https://examples.bootstrap-table.com/index.html?bootstrap5
 
 https://cdn.discordapp.com/attachments/869663850100846603/877695496938987540/Image_8-17-21_at_10.17_PM.JPG 
 https://chartkick.com/

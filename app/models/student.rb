@@ -1,6 +1,6 @@
 class Student < ApplicationRecord
-  has_many :quarterlies, dependent: :destroy
-  has_many :dibels, dependent: :destroy
+  has_many :quarterly_results, dependent: :destroy
+  has_many :dibels_results, dependent: :destroy
 
   validates :first_name, presence: true
   validates :last_name, presence: true

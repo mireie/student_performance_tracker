@@ -1,7 +1,19 @@
 <p id="notice"><%= notice %></p>
 
+<p><%= link_to 'New Student', new_student_path, class: "btn btn-primary" %></p>
+
 <h1>Students</h1>
 
+<% if @students.any? %>
+      <div class="row">
+        <% @students.order(:last_name).each do |student| %>
+          <%= render :partial => "layouts/student_card", :locals => {:student => student} %>
+        <% end %>
+      </div>
+    <% else %>
+      <p>There are no students yet.</p>
+    <% end %>
+<!--
 <table>
   <thead>
     <tr>
@@ -19,7 +31,8 @@
     <% end %>
   </tbody>
 </table>
+-->
 
 <br>
 
-<%= link_to 'New Student', new_student_path %>
+
