@@ -1,20 +1,20 @@
-class DibelsResultsController < ApplicationController
+class ProgressResultsController < ApplicationController
 
   def index
     @student = Student.find(params[:student_id])
-    @dibels_results = @student.dibels_results
+    @progresses = @student.progresses
     render :index
   end
 
   def new
     @student = Student.find(params[:student_id])
-    @dibels_result = @student.dibels_results.new
+    @dibels_result = @student.progresses.new
     render :new
   end
 
   def create
     @student = Student.find(params[:student_id])
-    @dibels_result = @student.dibels_results.new(dibels_result_params)
+    @dibels_result = @student.progresses.new(dibels_result_params)
     if @dibels_result.save
       flash[:notice] = "Dibels Result successfully added!"
       redirect_to student_path(@student)
@@ -39,7 +39,7 @@ class DibelsResultsController < ApplicationController
     @dibels_result = DibelsResult.find(params[:id])
     if @dibels_result.update(dibels_result_params)
       flash[:notice] = "Dibels Result successfully updated!"
-      redirect_to student_dibels_results_path(@dibels_result.student)
+      redirect_to student_progresses_path(@dibels_result.student)
     else
       @student = Student.find(params[:student_id])
       render :edit
