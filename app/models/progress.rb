@@ -1,4 +1,4 @@
-class DibelsResult < ApplicationRecord
+class Progress < ApplicationRecord
   belongs_to :student
 
   validates_uniqueness_of :date, :message => "Student already has an established DIBELS result for this date. Please update it instead."

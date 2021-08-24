@@ -4,8 +4,8 @@
       <h5 class="card-title"><%=link_to student.first_name + " " + student.last_name, student_path(student)%></h5>
     </div>
     <ul class="list-group list-group-flush">
-    <li class="list-group-item"><%=link_to 'Quarterly Test Results', student_quarterly_results_path(student)%></li>
-    <li class="list-group-item"><%=link_to 'DIBELS Results', student_dibels_results_path(student)%></li>
+    <li class="list-group-item"><%=link_to 'Benchmark Results', student_benchmarks_path(student)%></li>
+    <li class="list-group-item"><%=link_to 'DIBELS Results', student_progresses_path(student)%></li>
     <li class="list-group-item"><%=link_to 'Edit', edit_student_path(student)%></li>
     
     

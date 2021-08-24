@@ -1,8 +1,8 @@
 <h1>Student: <%= @student.first_name %></h1>
 
-<p><%= link_to "Add a DIBELS Result", new_student_dibels_result_path, class: "btn btn-primary" %></p>
+<p><%= link_to "Add Progress", new_student_progress_path, class: "btn btn-primary" %></p>
 
-<% if @dibels_results.any? %>
+<% if @progresses.any? %>
 <div class="table-responsive">
     <table class="table table-striped mt-3">
     <thead>
@@ -14,12 +14,12 @@
     <tr>
     </thead>
     <tbody>
-    <% @dibels_results.each do |dibels_result| %>
+    <% @progresses.each do |progress| %>
       <tr>
-        <th scope="row"><%= link_to dibels_result.date, edit_student_dibels_result_path(@student, dibels_result.id) %></th>
-        <td><%= dibels_result.grade %></td>
-        <td><%= dibels_result.dibels %></td>
-        <td><%= dibels_result.accuracy %></td>
+        <th scope="row"><%= link_to progress.date, edit_student_progress_path(@student, progress.id) %></th>
+        <td><%= progress.grade %></td>
+        <td><%= progress.dibels %></td>
+        <td><%= progress.accuracy %></td>
         </tr>
         <% end %>
       </tbody>

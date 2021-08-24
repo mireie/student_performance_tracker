@@ -9,7 +9,6 @@ class StudentsController < ApplicationController
   # GET /students/1 or /students/1.json
   def show
     @student = Student.find(params[:id])
-    @quarterly_results = 
     render :show
   end
 
@@ -59,6 +58,7 @@ class StudentsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_student
       @student = Student.find(params[:id])
+      # @teacher = Teacher.find(params[:teacher_id])   #if we need this later
     end
 
     # Only allow a list of trusted parameters through.

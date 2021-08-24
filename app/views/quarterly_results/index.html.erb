@@ -1,4 +1,0 @@
-<h2><%= link_to "#{@student.first_name} #{@student.last_name}", @student %></h2>
-<p><%= link_to "Add a Quarterly Result", new_student_quarterly_result_path, class: "btn btn-primary" %></p>
-
-<%= render :partial => "display_quarterly_results", :locals => {:student => @student, :quarterly_results => @student.quarterly_results}  %>

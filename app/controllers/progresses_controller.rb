@@ -1,4 +1,4 @@
-class ProgressResultsController < ApplicationController
+class ProgressesController < ApplicationController
 
   def index
     @student = Student.find(params[:student_id])
@@ -8,15 +8,15 @@ class ProgressResultsController < ApplicationController
 
   def new
     @student = Student.find(params[:student_id])
-    @dibels_result = @student.progresses.new
+    @progress = @student.progresses.new
     render :new
   end
 
   def create
     @student = Student.find(params[:student_id])
-    @dibels_result = @student.progresses.new(dibels_result_params)
-    if @dibels_result.save
-      flash[:notice] = "Dibels Result successfully added!"
+    @progress = @student.progresses.new(progress_params)
+    if @progress.save
+      flash[:notice] = "DIBLES score successfully added!"
       redirect_to student_path(@student)
     else
       render :new
@@ -25,21 +25,21 @@ class ProgressResultsController < ApplicationController
 
   def show
     @student = Student.find(params[:student_id])
-    @dibels_result = DibelsResult.find(params[:id])
+    @progress = Progress.find(params[:id])
     render :show
   end
 
   def edit
     @student = Student.find(params[:student_id])
-    @dibels_result = DibelsResult.find(params[:id])
+    @progress = Progress.find(params[:id])
     render :edit
   end
 
   def update
-    @dibels_result = DibelsResult.find(params[:id])
-    if @dibels_result.update(dibels_result_params)
-      flash[:notice] = "Dibels Result successfully updated!"
-      redirect_to student_progresses_path(@dibels_result.student)
+    @progress = Progress.find(params[:id])
+    if @progress.update(progress_params)
+      flash[:notice] = "DIBELS score successfully updated!"
+      redirect_to student_progresses_path(@progress.student)
     else
       @student = Student.find(params[:student_id])
       render :edit
@@ -47,15 +47,15 @@ class ProgressResultsController < ApplicationController
   end
 
   def destroy
-    @dibels_result = DibelsResult.find(params[:id])
-    @dibels_result.destroy
-    flash[:notice] = "Dibels Result successfully deleted!"
-    redirect_to student_path(@dibels_result.student)
+    @progress = Progress.find(params[:id])
+    @progress.destroy
+    flash[:notice] = "DIBELS score successfully deleted!"
+    redirect_to student_path(@progress.student)
   end
 
   private
-    def dibels_result_params
-      params.require(:dibels_result).permit(:date, :grade, :dibels, :accuracy)
+    def progress_params
+      params.require(:progress).permit(:date, :grade, :dibels, :accuracy)
     end
   
 end

@@ -17,7 +17,7 @@ class BenchmarksController < ApplicationController
     @student = Student.find(params[:student_id])
     @benchmark = @student.benchmarks.new(benchmark_params)
     if @benchmark.save
-      flash[:notice] = "Benchmark successfully added!"
+      flash[:notice] = "Benchmark score successfully added!"
       redirect_to student_path(@student)
     else
       render :new
@@ -39,8 +39,8 @@ class BenchmarksController < ApplicationController
   def update
     @benchmark = Benchmark.find(params[:id])
     if @benchmark.update(benchmark_params)
-      flash[:notice] = "Benchmark successfully updated!"
-      redirect_to student_benchmarks_path(@benchmark.student)
+      flash[:notice] = "Benchmark score successfully updated!"
+      redirect_to student_benchmark_path(@benchmark.student)
     else
       @student = Student.find(params[:student_id])
       render :edit
@@ -50,12 +50,12 @@ class BenchmarksController < ApplicationController
   def destroy
     @benchmark = Benchmark.find(params[:id])
     @benchmark.destroy
-    flash[:notice] = "Benchmark successfully deleted!"
+    flash[:notice] = "Benchmark score successfully deleted!"
     redirect_to student_path(@benchmark.student)
   end
 
   private
     def benchmark_params
-      params.require(:benchmark).permit(:date, :ge, :vocab_ge, :reading_comp_ge, :lnf, :snf, :nwf_cls, :nwf_wrc, :wrf, :orf_grade_lvl, :orf_cwpm, :orf_accuracy)
+      params.require(:benchmark).permit(:date, :ge, :vocab_ge, :reading_comp_ge, :lnf, :snf, :orf_grade_lvl, :orf_cwpm, :orf_accuracy)
     end
 end
