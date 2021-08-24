@@ -25,18 +25,18 @@ class BenchmarkResultsController < ApplicationController
 
   def show
     @student = Student.find(params[:student_id])
-    @benchmark_result = Benchmark.find(params[:id])
+    @benchmark_result = BenchmarkResult.find(params[:id])
     render :show
   end
 
   def edit
     @student = Student.find(params[:student_id])
-    @benchmark_result = Benchmark.find(params[:id])
+    @benchmark_result = BenchmarkResult.find(params[:id])
     render :edit
   end
 
   def update
-    @benchmark_result = Benchmark.find(params[:id])
+    @benchmark_result = BenchmarkResult.find(params[:id])
     if @benchmark_result.update(benchmark_result_params)
       flash[:notice] = "Benchmark score successfully updated!"
       redirect_to student_benchmark_results_path(@benchmark_result.student)
@@ -47,7 +47,7 @@ class BenchmarkResultsController < ApplicationController
   end
 
   def destroy
-    @benchmark_result = Benchmark.find(params[:id])
+    @benchmark_result = BenchmarkResult.find(params[:id])
     @benchmark_result.destroy
     flash[:notice] = "Benchmark score successfully deleted!"
     redirect_to student_path(@benchmark_result.student)

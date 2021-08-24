@@ -1,0 +1,5 @@
+<h3>Editing Teacher: <%= @teacher.first_name + " " + @teacher.last_name %></h3>
+
+<%= render 'teacher_form', teacher: @teacher %>
+
+<%= link_to 'Back', teachers_path %>

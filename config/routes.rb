@@ -9,5 +9,7 @@ Rails.application.routes.draw do
     resources :students
   end
 
+  get '/charts' => 'charts#index'
+
   root to:"students#index"
 end

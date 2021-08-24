@@ -6,32 +6,16 @@
 
 <% if @students.any? %>
       <div class="row">
+<%= paginate @students %>
         <% @students.order(:last_name).each do |student| %>
           <%= render :partial => "student_card", :locals => {:student => student} %>
         <% end %>
+<%= paginate @students %>
       </div>
     <% else %>
       <p>There are no students yet.</p>
     <% end %>
-<!--
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @students.order(:last_name).each do |student| %>
-      <tr>
-        <td><%= link_to "#{student.last_name}, #{student.first_name}", student %></td>
-        <td><%= link_to 'Edit', edit_student_path(student) %></td>
-        <td><%= link_to 'Remove', student, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
--->
 
 <br>
 

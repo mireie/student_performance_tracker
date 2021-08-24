@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_24_182004) do
+ActiveRecord::Schema.define(version: 2021_08_24_223856) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "benchmark_results", force: :cascade do |t|
-    t.string "date"
+    t.date "date"
     t.decimal "ge", precision: 6, scale: 2
     t.decimal "vocab_ge", precision: 6, scale: 2
     t.decimal "reading_comp_ge", precision: 6, scale: 2
@@ -72,5 +72,4 @@ ActiveRecord::Schema.define(version: 2021_08_24_182004) do
 
   add_foreign_key "benchmark_results", "students"
   add_foreign_key "progresses", "students"
-  add_foreign_key "students", "teachers"
 end

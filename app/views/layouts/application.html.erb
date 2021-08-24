@@ -24,6 +24,11 @@
                   <a class="nav-link" href="/students">Students</a>
                 </li>
               </ul>
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link" href="/teachers">Teachers</a>
+                </li>
+              </ul>
               <div id="user-info">
                 <% if current_user %>
                   <%= link_to current_user.email, edit_user_registration_url %> | <%= link_to "Sign out", '/users/sign_out', :method => :delete %>

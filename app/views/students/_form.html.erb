@@ -16,6 +16,7 @@
     <%= form.text_field :first_name %>
     <%= form.label :Last_Name %>:
     <%= form.text_field :last_name %>
+    <%= form.collection_select :teacher_id, @teachers, :id, :full_name%>
     <%= form.submit %>
   </div>
 <% end %>

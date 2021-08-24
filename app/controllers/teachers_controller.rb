@@ -10,6 +10,7 @@ class TeachersController < ApplicationController
   # GET /teachers/1 or /teachers/1.json
   def show
     @teacher = Teacher.find(params[:id])
+    @students = @teacher.students.page(params[:page])
     render :show
   end
 
@@ -21,6 +22,8 @@ class TeachersController < ApplicationController
 
   # GET /teachers/1/edit
   def edit
+    @teacher = Teacher.find(params[:id])
+    render :edit
   end
 
   # POST /teachers or /teachers.json

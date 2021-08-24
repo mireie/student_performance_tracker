@@ -1,4 +1,9 @@
 <h2><%= @student.first_name + " " + @student.last_name%></h2>
+<% if @teacher %>
+  <h4><%= link_to @teacher.first_name + " " + @teacher.last_name, teacher_path(@teacher) %></h4>
+<% else %>
+    <p>There is no teacher assigned to this student.</p>
+<% end %>
 
 <%= link_to 'Edit Student', edit_student_path(@student) %>
 <%= link_to 'Back to All Students', students_path %>
@@ -7,6 +12,10 @@
                                    :method => "delete"} %></p>
 
 <p id="notice"><%= notice %></p>
-<%= render :partial => "/benchmark_results/display_benchmark_results", :locals => {:student => @student}  %>
+<p><%= link_to "Add a Benchmark score", new_student_benchmark_result_path(@student), class: "btn btn-primary" %></p>
+<%= render :partial => "/benchmark_results/display_benchmark_results", :locals => {:student => @student} %>
+<hr>
+<p><%= link_to "Add Progress", new_student_progress_path(@student), class: "btn btn-primary" %></p>
+<%= render :partial => "/progresses/display_progress", :locals => {:student => @student} %>
 
 

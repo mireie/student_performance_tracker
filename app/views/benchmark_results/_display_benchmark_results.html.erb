@@ -24,7 +24,7 @@
       <tbody>
   <% @student.benchmark_results.each do |q| %>
         <tr>
-          <th class="table-light" scope="row"><%= link_to q.date, edit_student_benchmark_result_path(@student, q.id) %></th>
+          <th class="table-light" scope="row"><%= link_to q.season, edit_student_benchmark_result_path(@student, q.id) %></th>
           <td class="table-info" ><%= q.ge %></td>
           <td class="table-warning"><%= q.vocab_ge %></td>
           <td class="table-warning"><%= q.reading_comp_ge %></td>

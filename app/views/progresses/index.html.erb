@@ -1,31 +1,6 @@
-<h1>Student: <%= @student.first_name %></h1>
+<h2><%= link_to "#{@student.first_name} #{@student.last_name}", @student %></h2>
 
 <p><%= link_to "Add Progress", new_student_progress_path, class: "btn btn-primary" %></p>
 
-<% if @progresses.any? %>
-<div class="table-responsive">
-    <table class="table table-striped mt-3">
-    <thead>
-    <tr>
-      <th scope="col">Date</th>
-      <th scope="col">Grade</th>
-      <th scope="col">DIBELS Score</th>
-      <th scope="col">Accuracy</th>
-    <tr>
-    </thead>
-    <tbody>
-    <% @progresses.each do |progress| %>
-      <tr>
-        <th scope="row"><%= link_to progress.date, edit_student_progress_path(@student, progress.id) %></th>
-        <td><%= progress.grade %></td>
-        <td><%= progress.dibels %></td>
-        <td><%= progress.accuracy %></td>
-        </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
-<% else %>
-  <p>There are no DIBELS yet.</p>
-<% end %>
+<%= render :partial => "/progresses/display_progress", :locals => {:student => @student}  %>
 

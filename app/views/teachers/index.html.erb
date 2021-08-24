@@ -13,24 +13,5 @@
     <% else %>
       <p>There are no teachers yet.</p>
     <% end %>
-<!--
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @teachers.order(:last_name).each do |teacher| %>
-      <tr>
-        <td><%= link_to "#{teacher.last_name}, #{teacher.first_name}", teacher %></td>
-        <td><%= link_to 'Edit', edit_teacher_path(teacher) %></td>
-        <td><%= link_to 'Remove', teacher, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
--->
 
 <br>

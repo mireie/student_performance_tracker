@@ -1,0 +1,46 @@
+<%= pie_chart Student.group(:teacher_id).count %>
+<br><br><br><br> -------- <br><br><br><br>
+<%= line_chart @progresses.pluck(:date, :dibels), xtitle: "Date", ytitle: "DIBELS Correct WPM", curve: false%>
+<br><br><br><br> -------- <br><br><br><br>
+<%= line_chart [
+  {name: "DIBELS", data: @progresses.pluck(:date, :dibels), ytitle: "test", :yAxisID=> "leftAxis"},
+  {name: "Accuracy", data: @progresses.pluck(:date, :accuracy), ytitle: "Accuracy", :yAxisID=> "rightAxis"}
+], library: {
+  scales: {
+          y: {
+            type: 'linear',
+            position: 'left',
+            display: true,
+            id: 'leftAxis',
+          },
+          y1: {
+            type: 'linear',
+            position: 'right',
+            display: true,
+            id: 'rightAxis',
+          }
+      }
+    }, xtitle: "Date", curve: false %>
+<br>
+<br>
+<br>
+<br><br><br><br> -------- <br><br><br><br>
+<%= line_chart [
+  {name: "DIBELS", data: @progresses.pluck(:date, :dibels, :accuracy)},
+  # {name: "Accuracy", data: @progresses.pluck(:date, :accuracy)}, id: "rightAxis"
+], library: {
+  scales: {
+          y: {
+            type: 'linear',
+            position: 'left',
+            display: true,
+            id: 'leftAxis'
+          },
+          y1: {
+            type: 'linear',
+            position: 'right',
+            display: true,
+            id: 'rightAxis'
+          }
+      }
+    }, xtitle: "Date", curve: false %>

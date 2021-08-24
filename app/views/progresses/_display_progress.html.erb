@@ -1,0 +1,26 @@
+<% if @student.progresses.any? %>
+<div class="table-responsive">
+    <table class="table table-striped mt-3">
+    <thead>
+    <tr>
+      <th scope="col">Date</th>
+      <th scope="col">Grade</th>
+      <th scope="col">DIBELS Score</th>
+      <th scope="col">Accuracy</th>
+    <tr>
+    </thead>
+    <tbody>
+    <% @student.progresses.each do |progress| %>
+      <tr>
+        <th scope="row"><%= link_to progress.date, edit_student_progress_path(@student, progress.id) %></th>
+        <td><%= progress.grade %></td>
+        <td><%= progress.dibels %></td>
+        <td><%= progress.accuracy %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% else %>
+  <p>There are no DIBELS yet.</p>
+<% end %>
