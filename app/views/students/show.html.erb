@@ -1,6 +1,6 @@
 <h2><%= @student.first_name + " " + @student.last_name%></h2>
 <% if @teacher %>
-  <h4><%= link_to @teacher.first_name + " " + @teacher.last_name, teacher_path(@teacher) %></h4>
+  <h4>Teacher: <%= link_to @teacher.first_name + " " + @teacher.last_name, teacher_path(@teacher) %></h4>
 <% else %>
     <p>There is no teacher assigned to this student.</p>
 <% end %>

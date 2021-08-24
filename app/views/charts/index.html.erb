@@ -2,22 +2,24 @@
 <br><br><br><br> -------- <br><br><br><br>
 <%= line_chart @progresses.pluck(:date, :dibels), xtitle: "Date", ytitle: "DIBELS Correct WPM", curve: false%>
 <br><br><br><br> -------- <br><br><br><br>
+
+
 <%= line_chart [
-  {name: "DIBELS", data: @progresses.pluck(:date, :dibels), ytitle: "test", :yAxisID=> "leftAxis"},
-  {name: "Accuracy", data: @progresses.pluck(:date, :accuracy), ytitle: "Accuracy", :yAxisID=> "rightAxis"}
+  {:name=>'DIBELS', :data=>@progresses.pluck(:date, :dibels), :yAxisID=>'leftAxis'},
+  {:name=> 'Accuracy', :data=>@progresses.pluck(:date, :accuracy), :yAxisID=> 'rightAxis'}
 ], library: {
   scales: {
           y: {
             type: 'linear',
-            position: 'left',
+            position: 'right',
             display: true,
-            id: 'leftAxis',
+            id: 'leftAxis'
           },
           y1: {
             type: 'linear',
-            position: 'right',
+            position: 'left',
             display: true,
-            id: 'rightAxis',
+            id: 'rightAxis'
           }
       }
     }, xtitle: "Date", curve: false %>
@@ -25,12 +27,14 @@
 <br>
 <br>
 <br><br><br><br> -------- <br><br><br><br>
-<%= line_chart dataset: [@progresses.pluck(:date, :dibels), @progresses.pluck(:date, :accuracy)],
+<%= line_chart dataset: [
+data: @progresses.pluck(:date, :dibels), 
+data: @progresses.pluck(:date, :accuracy),
 
 # [
 #   {name: "DIBELS", dataset: @progresses.pluck(:date, :dibels)},
 #   {name: "Accuracy", dataset: @progresses.pluck(:date, :accuracy)}
-# ], 
+], 
 library: {
   scales: {
           # y: {
