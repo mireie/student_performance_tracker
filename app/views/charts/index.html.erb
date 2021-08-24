@@ -25,22 +25,25 @@
 <br>
 <br>
 <br><br><br><br> -------- <br><br><br><br>
-<%= line_chart [
-  {name: "DIBELS", data: @progresses.pluck(:date, :dibels, :accuracy)},
-  # {name: "Accuracy", data: @progresses.pluck(:date, :accuracy)}, id: "rightAxis"
-], library: {
+<%= line_chart dataset: [@progresses.pluck(:date, :dibels), @progresses.pluck(:date, :accuracy)],
+
+# [
+#   {name: "DIBELS", dataset: @progresses.pluck(:date, :dibels)},
+#   {name: "Accuracy", dataset: @progresses.pluck(:date, :accuracy)}
+# ], 
+library: {
   scales: {
-          y: {
-            type: 'linear',
-            position: 'left',
-            display: true,
-            id: 'leftAxis'
-          },
+          # y: {
+          #   type: 'linear',
+          #   position: 'left',
+          #   display: true,
+          #   # id: 'leftAxis'
+          # },
           y1: {
             type: 'linear',
             position: 'right',
             display: true,
-            id: 'rightAxis'
+            # id: 'rightAxis'
           }
       }
     }, xtitle: "Date", curve: false %>

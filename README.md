@@ -16,7 +16,6 @@
 
 
 # Flex
-* Limiting teacher's view to own students (one-to-many)
 * Admin to add a new test suite
 * Add date range, trend line to graph
 * Add middle name to students? ID? (to make them unique in the database)
