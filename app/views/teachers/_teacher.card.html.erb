@@ -1,0 +1,10 @@
+<div class="col-sm-4">
+  <div class="card m-1">
+    <div class="card-body">
+      <h5 class="card-title"><%=link_to teacher.first_name + " " + teacher.last_name, teacher_path(teacher)%></h5>
+    </div>
+    <ul class="list-group list-group-flush">
+    <li class="list-group-item"><%=link_to 'Edit', edit_teacher_path(teacher)%></li>
+    </ul>
+  </div>
+</div>

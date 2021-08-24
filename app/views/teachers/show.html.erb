@@ -1,0 +1,9 @@
+<h2><%= @teacher.first_name + " " + @teacher.last_name%></h2>
+
+<%= link_to 'Edit teacher', edit_teacher_path(@teacher) %>
+<%= link_to 'Back to All Teachers', teachers_path %>
+<p><%= link_to "Delete Teacher", teacher_path( @teacher),
+                         :data => {:confirm => "You sure?",
+                                   :method => "delete"} %></p>
+
+<p id="notice"><%= notice %></p>
