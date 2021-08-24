@@ -2,11 +2,11 @@
 
 <%= link_to 'Edit Student', edit_student_path(@student) %>
 <%= link_to 'Back to All Students', students_path %>
-<p><%= link_to "Delete Student", teacher_student_path(@teacher, @student),
+<p><%= link_to "Delete Student", student_path( @student),
                          :data => {:confirm => "You sure?",
                                    :method => "delete"} %></p>
 
 <p id="notice"><%= notice %></p>
-<%= render :partial => "/benchmark/display_benchmarks", :locals => {:student => @student}  %>
+<%= render :partial => "/benchmark_results/display_benchmark_results", :locals => {:student => @student}  %>
 
 

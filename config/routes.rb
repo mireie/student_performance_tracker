@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :students do
     resources :progresses
-    resources :benchmarks
+    resources :benchmark_results
   end
 
   resources :teachers do

@@ -1,4 +1,4 @@
-class Benchmark < ApplicationRecord
+class BenchmarkResult < ApplicationRecord
   belongs_to :student
 
   validates :date, presence: :true

@@ -1,6 +1,6 @@
 class Student < ApplicationRecord
   belongs_to :teacher
-  has_many :benchmarks, dependent: :destroy
+  has_many :benchmark_results, dependent: :destroy
   has_many :progresses, dependent: :destroy
 
   validates :first_name, presence: true
