@@ -1,0 +1,24 @@
+<table class="table table-striped mt-3">
+  <thead>
+    <tr>
+      <th scope="col">Student</th>
+      <th scope="col">Teacher</th>
+      <th scope="col">Last Benchmark</th>
+      <th scope="col">Last Progress Check</th>
+      <th scope="col">Average Progress DIBELS</th>
+      <th scope="col">Average Progress Accuracy</th>
+      <tr>
+      </thead>
+      <tbody>
+        <% @students.order(:last_name).each do |student| %>
+          <tr>
+            <th scope="row"><%= link_to "#{student.last_name}, #{student.first_name}", student_path(student)%></th>
+            <td><%= link_to "#{student.teacher.first_name} #{student.teacher.last_name}", teacher_path(student.teacher) %></td>
+            <td><%= student.last_benchmark_date%></td>
+            <td><%= student.last_progress_date%></td>
+            <td><%= student.avg_progress_dibels%></td>
+            <td><%= "#{student.avg_progress_accuracy.round(2)}%"%></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>

@@ -19,8 +19,8 @@ class Seed
     puts "Generating Teachers:"
     25.times do |i|
       Teacher.create!(
-        first_name: Faker::Creature::Dog.name,
-        last_name: Faker::Creature::Cat.name,
+        first_name: Faker::Name.first_name,
+        last_name: Faker::Name.last_name 
       )
       print "."
     end
@@ -33,8 +33,8 @@ class Seed
     250.times do |k|
       teacher = Teacher.order("RANDOM()").first
       Student.create!(
-        first_name: Faker::Creature::Dog.name,
-        last_name: Faker::Creature::Cat.name,
+        first_name: Faker::Name.first_name,
+        last_name: Faker::Name.last_name, 
         teacher_id: teacher.id,
       )
       if counter % 25 === 0

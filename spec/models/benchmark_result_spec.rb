@@ -1,7 +1,7 @@
 require "rails_helper"
 
 describe BenchmarkResult do
-  it { should allow_value("string").for(:date) }
+  it { should allow_value(1).for(:date) }
   it { should allow_value(1.1).for(:ge) }
   it { should_not allow_value("string").for(:ge) }
   it { should allow_value(1.1).for(:vocab_ge) }

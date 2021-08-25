@@ -8,7 +8,6 @@ class ChartsController < ApplicationController
     Progress.create!(:date => "15-01-2020", :grade => 2, :dibels => 78, :accuracy => 0.88, :student_id => @student.id)
     Progress.create!(:date => "01-2-2020", :grade => 2, :dibels => 98, :accuracy => 0.95, :student_id => @student.id)
     Progress.create!(:date => "15-02-2020", :grade => 2, :dibels => 121, :accuracy => 0.96, :student_id => @student.id)
-
     Progress.create!(:date => "15-10-2020", :grade => 3, :dibels => 63, :accuracy => 0.91, :student_id => @student.id)
     Progress.create!(:date => "1-11-2020", :grade => 3, :dibels => 65, :accuracy => 0.87, :student_id => @student.id)
     Progress.create!(:date => "15-11-2020", :grade => 3, :dibels => 52, :accuracy => 0.88, :student_id => @student.id)

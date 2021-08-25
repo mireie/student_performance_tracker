@@ -1,22 +1,15 @@
 <p id="notice"><%= notice %></p>
-
 <p><%= link_to 'New Student', new_student_path, class: "btn btn-primary" %></p>
-
 <h1>Students</h1>
-
-<% if @students.any? %>
-      <div class="row">
-<%= paginate @students %>
-        <% @students.order(:last_name).each do |student| %>
-          <%= render :partial => "student_card", :locals => {:student => student} %>
-        <% end %>
-<%= paginate @students %>
-      </div>
-    <% else %>
+<hr>
+<div class="row">
+  <div class="col">
+    <% if @students.any? %>
+    <%= paginate @students %>
+      <%= render :partial => "student_grid", :locals => {:students => @students} %>
+    <%= paginate @students %>
+    <% else%>
       <p>There are no students yet.</p>
     <% end %>
-
-
-<br>
-
-
+  </div>
+</div>

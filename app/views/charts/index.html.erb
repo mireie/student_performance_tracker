@@ -1,53 +1,152 @@
-<%= pie_chart Student.group(:teacher_id).count %>
-<br><br><br><br> -------- <br><br><br><br>
-<%= line_chart @progresses.pluck(:date, :dibels), xtitle: "Date", ytitle: "DIBELS Correct WPM", curve: false%>
-<br><br><br><br> -------- <br><br><br><br>
-
-
-<%= line_chart [
-  {:name=>'DIBELS', :data=>@progresses.pluck(:date, :dibels), :yAxisID=>'leftAxis'},
-  {:name=> 'Accuracy', :data=>@progresses.pluck(:date, :accuracy), :yAxisID=> 'rightAxis'}
-], library: {
-  scales: {
-          y: {
-            type: 'linear',
-            position: 'right',
-            display: true,
-            id: 'leftAxis'
-          },
-          y1: {
-            type: 'linear',
-            position: 'left',
-            display: true,
-            id: 'rightAxis'
+<%=@progresses[0].date%>
+<br>
+<%=
+dave = []
+dibels = []
+accuracy = []
+i = 1
+@progresses.each { |x|
+  dibels.push(x.dibels)
+  accuracy.push(x.accuracy)
+  dave.push(x.date)
+  i+=1
+}
+%>
+<canvas id="myChart" width="960" height="200"></canvas>
+<script>
+  var ctx = document.getElementById('myChart');
+  var myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: <%=dave%>,
+      datasets: [{
+        label: 'Dibels',
+        yAxisID: 'A',
+        data: <%=dibels%>,
+        fill:false,
+        borderColor:"#308af3",
+        pointBackgroundColor: "#308af3",
+        pointBorderWidth: 2,
+        pointHoverBackgroundColor: "#fff",
+        pointHoverBorderWidth: 2,
+        lineTension:0.05
+      }, {
+        label: 'Accuracy',
+        yAxisID: 'B',
+        data: <%=accuracy%>,
+        fill:false,
+        borderColor:"#48ba16",
+        pointBackgroundColor: "#48ba16",
+        pointBorderWidth: 2,
+        pointHoverBackgroundColor: "#fff",
+        pointHoverBorderWidth: 2,
+        lineTension:0.05
+      }]
+    },
+    options: {
+      scales: {
+        yAxes: [{
+          id: 'A',
+          type: 'linear',
+          position: 'left',
+        }, {
+          id: 'B',
+          type: 'linear',
+          position: 'right',
+          ticks: {
+            max: 1,
+            min: 0
           }
+        }]
       }
-    }, xtitle: "Date", curve: false %>
+    }
+  });
+</script>
 <br>
 <br>
 <br>
-<br><br><br><br> -------- <br><br><br><br>
-<%= line_chart dataset: [
-data: @progresses.pluck(:date, :dibels), 
-data: @progresses.pluck(:date, :accuracy),
-
+<br>
+-------- <br>
+<br>
+<br>
+<br>
+<%= pie_chart Student.group(:teacher_id).count %>
+<br>
+<br>
+<br>
+<br>
+-------- <br>
+<br>
+<br>
+<br>
+<%= line_chart @progresses.pluck(:date, :dibels), xtitle: "Date", ytitle: "DIBELS Correct WPM", curve: false%>
+<br>
+<br>
+<br>
+<br>
+-------- <br>
+<br>
+<br>
+<br>
+<%= line_chart [
+{:name=>'DIBELS', :data=>@progresses.pluck(:date, :dibels), :yAxisID=>'leftAxis'},
+{:name=> 'Accuracy', :data=>@progresses.pluck(:date, :accuracy), :yAxisID=> 'rightAxis'}
+], library: {
+scales: {
+y: {
+type: 'linear',
+position: 'right',
+display: true,
+id: 'leftAxis'
+},
+y1: {
+type: 'linear',
+position: 'left',
+display: true,
+id: 'rightAxis'
+}
+}
+}, xtitle: "Date", curve: false %>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+-------- <br>
+<br>
+<br>
+<br>
+<%# <%= line_chart  %>
+[
+{:name=>'DIBELS', :data=>@progresses.pluck(:date, :dibels), :yAxisID=>'leftAxis'},
+{:name=> 'Accuracy', :data=>@progresses.pluck(:date, :accuracy), :yAxisID=> 'rightAxis'}
+], library: {
+scales: {
+y: {
+type: 'linear',
+position: 'left',
+display: true,
+},
+y1: {
+type: 'linear',
+position: 'right',
+display: true,
+}
+}
+}, xtitle: "Date", curve: false %>
+# dataset:
+# [{
+#   label: 'Dataset 1',
+#   data: @progresses.pluck(:date, :dibels),
+#   yAxisID: 'y'
+# },
+# { 
+#   label: 'Dataset 2',
+#   data: @progresses.pluck(:date, :accuracy),
+#   yAxisID: 'y1'
+# }],
 # [
 #   {name: "DIBELS", dataset: @progresses.pluck(:date, :dibels)},
-#   {name: "Accuracy", dataset: @progresses.pluck(:date, :accuracy)}
-], 
-library: {
-  scales: {
-          # y: {
-          #   type: 'linear',
-          #   position: 'left',
-          #   display: true,
-          #   # id: 'leftAxis'
-          # },
-          y1: {
-            type: 'linear',
-            position: 'right',
-            display: true,
-            # id: 'rightAxis'
-          }
-      }
-    }, xtitle: "Date", curve: false %>
+#   {name: "Accuracy", dataset: @progresses.pluck(:date, :accuracy)} 

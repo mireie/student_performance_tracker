@@ -4,15 +4,15 @@
     <title>StudentPerformanceTracker</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/chart.js@2.9.1/dist/Chart.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.1/dist/Chart.min.js"></script>
   </head>
-
- <body>
-  <div class="container">
-  <div class="row">
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <body>
+    <div class="container">
+      <div class="row">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
           <div class="container-fluid">
             <a class="navbar-brand" href="/">Test Tracker</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -41,8 +41,8 @@
             <%= flash[:notice] %>
           </div>
         </nav>
-    <%= yield %>
-    </div>
+        <%= yield %>
+      </div>
     </div>
   </body>
 </html>
