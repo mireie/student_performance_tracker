@@ -60,7 +60,7 @@ class Seed
           snf: rand(100),
           orf_grade_lvl: rand(12),
           orf_cwpm: rand(250),
-          orf_accuracy: rand().round(2),
+          orf_accuracy: rand(0.70..1).round(2),
           student_id: s.id,
         )
       end
@@ -77,7 +77,7 @@ class Seed
           date: Faker::Date.backward(days: 365),
           grade: rand(12),
           dibels: rand(50..200),
-          accuracy: rand().round(2),
+          accuracy: rand(0.70..1).round(2),
           student_id: s.id,
         )
       end

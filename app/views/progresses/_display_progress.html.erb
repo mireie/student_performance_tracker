@@ -1,26 +1,28 @@
 <% if @student.progresses.any? %>
-<div class="table-responsive">
+  <div class="table-responsive">
     <table class="table table-striped mt-3">
-    <thead>
-    <tr>
-      <th scope="col">Date</th>
-      <th scope="col">Grade</th>
-      <th scope="col">DIBELS Score</th>
-      <th scope="col">Accuracy</th>
-    <tr>
-    </thead>
-    <tbody>
-    <% @student.progresses.order(:date).reverse_order.each do |progress| %>
-      <tr>
-        <th scope="row"><%= link_to progress.date, edit_student_progress_path(@student, progress.id) %></th>
-        <td><%= progress.grade %></td>
-        <td><%= progress.dibels %></td>
-        <td><%= "#{(progress.accuracy*100).round(2)}%" %></td>
-        </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
-<% else %>
-  <p>There are no DIBELS yet.</p>
-<% end %>
+      <thead>
+        <tr>
+          <th scope="col">Date</th>
+          <th scope="col">Grade</th>
+          <th scope="col">DIBELS Score</th>
+          <th scope="col">Accuracy</th>
+          <th scope="col">Edit</th>
+          <tr>
+          </thead>
+          <tbody>
+            <% @student.progresses.order(:date).reverse_order.each do |progress| %>
+              <tr>
+                <th scope="row"><%= progress.date %></th>
+                <td><%= progress.grade.round(0) %></td>
+                <td><%= progress.dibels.round(0) %></td>
+                <td><%= "#{(progress.accuracy*100).round(2)}%" %></td>
+                <td><%= link_to "Edit", edit_student_progress_path(@student, progress.id) %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    <% else %>
+      <p>There are no DIBELS yet.</p>
+    <% end %>

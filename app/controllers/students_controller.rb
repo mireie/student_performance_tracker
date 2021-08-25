@@ -1,5 +1,6 @@
 class StudentsController < ApplicationController
   before_action :set_student, only: %i[ show edit update destroy ]
+  before_action :require_login, only: [:new, :create]
   before_action :authorize_admin, only: [:edit, :update, :destroy]
 
   # GET /students or /students.json
@@ -71,5 +72,12 @@ class StudentsController < ApplicationController
     def student_params
       # params.fetch(:student, {})
       params.require(:student).permit(:first_name, :last_name, :teacher_id, :active)
+    end
+
+    def require_login
+      unless logged_in?
+        flash[:alert] = "You must be logged in to access this page"
+        redirect_to '/users/sign_in'
+      end
     end
 end

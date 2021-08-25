@@ -20,4 +20,8 @@ class ApplicationController < ActionController::Base
       end
     end
   end
+
+  def logged_in?
+    current_user != nil
+  end
 end

@@ -1,10 +1,11 @@
 <h2><%= @teacher.first_name + " " + @teacher.last_name%></h2>
 
-<p><%= link_to 'Back to All Teachers', teachers_path %></p>
 <p><%= link_to 'Edit teacher', edit_teacher_path(@teacher) %></p>
 <p><%= link_to "Delete Teacher", teacher_path( @teacher),
                          :data => {:confirm => "You sure?",
                                    :method => "delete"} %></p>
+<p><%= link_to 'Back to All Teachers', teachers_path %></p>
+
 <% if @teacher.students.any? %>
   <%= paginate @students %>
       <%= render :partial => "/students/student_grid", :locals => {@teacher.students => @students} %>

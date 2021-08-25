@@ -15,8 +15,22 @@
  */
 @import "bootstrap";
 
+@font-face {
+  font-family: "Raleway";
+  src: url("/fonts/Raleway-Regular.ttf");
+}
+
 body {
   font-family: Lato, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+.nav-link {
+  font-family: Raleway, Lato, sans-serif;
 }
 
 footer {
@@ -26,6 +40,11 @@ footer {
 
 a {
   color: #ff7264;
+  font-family: Raleway, Lato, sans-serif;
+}
+
+a:hover {
+  color: #505ac7;
 }
 
 #user-info {
@@ -99,4 +118,10 @@ th {
 .text-muted a {
   color: #ff7264 !important;
   margin-left: 5px;
+  font-family: Raleway, Lato, sans-serif;
 }
+
+#page-content {
+  flex: 1 0 auto;
+}
+

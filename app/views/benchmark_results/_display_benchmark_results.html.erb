@@ -18,12 +18,13 @@
           <th class="table-danger" scope="col">ORF Grade Lvl.</th>
           <th class="table-danger" scope="col">ORF CWPM</th>
           <th class="table-danger" scope="col">ORF Accuracy</th>
+          <th class="table-danger" scope="col">Edit</th>
         </tr>
       </thead>
       <tbody>
         <% @student.benchmark_results.order(:date).reverse_order.each do |q| %>
           <tr>
-            <th class="table-light" scope="row"><%= link_to q.season, edit_student_benchmark_result_path(@student, q.id) %></th>
+            <th class="table-light" scope="row"><%= q.season %></th>
             <td class="table-info" ><%= q.ge %></td>
             <td class="table-warning"><%= q.vocab_ge %></td>
             <td class="table-warning"><%= q.reading_comp_ge %></td>
@@ -32,6 +33,7 @@
             <td class="table-danger"><%= q.orf_grade_lvl %></td>
             <td class="table-danger"><%= q.orf_cwpm %></td>
             <td class="table-danger"><%= "#{q.orf_accuracy*100}%" %></td>
+            <td class="table-danger"><%= link_to "Edit", edit_student_benchmark_result_path(@student, q.id) %></td>
           </tr>
         <% end %>
       </tbody>

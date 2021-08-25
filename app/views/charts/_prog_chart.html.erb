@@ -10,11 +10,12 @@ accuracy = []
 }
 %>
 <script>
-  const myString = '<%=raw calendar%>'
-  const noBracket1 = myString.replace(/^./g, '')
-  const noBracket2 = noBracket1.replace(/.$/g, '')
-  const noQuotes = noBracket2.replace(/"/g, '')
-  const calendarJsArray = noQuotes.split(", ")
+  // Note from creators: We are aware of global variables being used. Unfortunately, it is the only way to render the graph on the first visit. Otherwise, it would give us an error such as 'Browser: Identifier X has already been declared'.
+  hisString = '<%=raw calendar%>'
+  noBracket1 = hisString.replace(/^./g, '')
+  noBracket2 = noBracket1.replace(/.$/g, '')
+  noQuotes = noBracket2.replace(/"/g, '')
+  calendarJsArray = noQuotes.split(", ")
   
   function linearRegression(y,x){
         var lr = {};
@@ -41,12 +42,12 @@ accuracy = []
         return lr;
   }
   
-  let x = [];
+  x = [];
   for (let i=0; i < calendarJsArray.length; i++) {
     x.push(i)
   }
-  let y = <%=dibels%>;
-  let lr = linearRegression(y,x);
+  y = <%=dibels%>;
+  lr = linearRegression(y,x);
   
   regressionY = []
   for(let i=0; i<x.length; i++) {
@@ -59,7 +60,19 @@ accuracy = []
     data: {
       labels: calendarJsArray,
       datasets: [{
-        label: 'Dibels',
+        label: 'DIBELS Trend Line',
+        yAxisID: 'A',
+        data: regressionY,
+        pointRadius: 0,
+        fill:false,
+        borderColor: "grey",
+        pointBackgroundColor: "grey",
+        pointBorderWidth: 2,
+        pointHoverBackgroundColor: "#fff",
+        pointHoverBorderWidth: 2,
+        lineTension:0.05,
+      }, {
+        label: 'DIBELS',
         yAxisID: 'A',
         data: <%=dibels%>,
         fill:false,
@@ -80,18 +93,6 @@ accuracy = []
         pointHoverBackgroundColor: "#fff",
         pointHoverBorderWidth: 2,
         lineTension:0.05
-      }, {
-        label: 'Regression',
-        yAxisID: 'A',
-        data: regressionY,
-        pointRadius: 0,
-        fill:false,
-        borderColor: "grey",
-        pointBackgroundColor: "grey",
-        pointBorderWidth: 2,
-        pointHoverBackgroundColor: "#fff",
-        pointHoverBorderWidth: 2,
-        lineTension:0.05,
       }]
     },
     options: {
@@ -99,8 +100,12 @@ accuracy = []
       maintainAspectRatio: false,
       plugins: {
         title: {
+          color: '#303030',
           display: true,
-          text: 'DIBELS and Accuracy'
+          text: 'DIBELS and Accuracy',
+          font: {
+            size: 24
+          },
         },
       },
       scales: {
