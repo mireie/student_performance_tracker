@@ -28,15 +28,16 @@ class Student < ApplicationRecord
     if self.progresses.size > 0
     self.progresses.average(:dibels).to_f.round(2)
     else
-      "No Progress test results"
+      "No progress test results"
     end
   end
 
   def avg_progress_accuracy
     if self.progresses.size > 0
-    self.progresses.average(:accuracy).to_f*100
+      average = self.progresses.average(:accuracy)*100
+      "#{average.round(2)}%"
     else
-      "No Progress test results"
+      "No progress test results"
     end
   end
 

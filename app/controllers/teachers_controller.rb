@@ -11,8 +11,7 @@ class TeachersController < ApplicationController
   def show
     @teacher = Teacher.find(params[:id])
     @students = @teacher.students.page(params[:page])
-    @teachers = Teacher.all
-    # @all_students = Student.all
+    @all_students = Student.all
     render :show
   end
 

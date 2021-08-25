@@ -27,11 +27,6 @@ body {
   background-color: lightcoral;
 }
 
-td {
-  border: 1px solid black;
-  padding: 5px;
-}
-
 .page-item,
 ul.pagination a {
   color: #303030;
@@ -46,4 +41,24 @@ li.page-item.active {
 .btn a {
   color:white;
   text-decoration: none;
+}
+
+.grid-col-1 {
+  background-color: #34373C !important;
+  color:white;
+}
+
+.grid-col-1 a, .grid-col-2 a {
+  color:white;
+}
+
+.grid-col-2 {
+  background-color: #444444 !important;
+}
+
+.table {
+  border-bottom:none !important;
+}
+thead, tbody, tfoot, tr, td, th {
+  border:none;
 }

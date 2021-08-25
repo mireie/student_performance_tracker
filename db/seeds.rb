@@ -53,14 +53,14 @@ class Seed
       rand(12).times do
         BenchmarkResult.create!(
           date: Faker::Date.backward(days: 1460),
-          ge: rand(5) + rand(),
-          vocab_ge: rand(5) + rand(),
-          reading_comp_ge: rand(5) + rand(),
+          ge: rand(5) + rand().round(2),
+          vocab_ge: rand(5) + rand().round(2),
+          reading_comp_ge: rand(5) + rand().round(2),
           lnf: rand(100),
           snf: rand(100),
           orf_grade_lvl: rand(12),
           orf_cwpm: rand(250),
-          orf_accuracy: rand(),
+          orf_accuracy: rand().round(2),
           student_id: s.id,
         )
       end
@@ -77,7 +77,7 @@ class Seed
           date: Faker::Date.backward(days: 365),
           grade: rand(12),
           dibels: rand(12),
-          accuracy: rand(),
+          accuracy: rand().round(2),
           student_id: s.id,
         )
       end

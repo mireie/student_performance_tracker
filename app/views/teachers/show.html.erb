@@ -3,7 +3,7 @@
 <%= form_with(model: @teacher, local: true) do |form| %>
 <div class="actions">
     <%= form.label "Add a Student"%>
-    <%= form.collection_select(:student_ids, Student.all, :id, :student_name, { :multiple => true }) %>
+    <%= form.collection_select(:student_ids, Student.all, :id, :student_name) %>
     <%= form.submit %>
   </div>
   <% end %>

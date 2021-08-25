@@ -56,3 +56,11 @@ Co-authored-by: Dave Lindqvist <lindqvist.dave@gmail.com>
     <%= form.submit %>
   </div>
   <% end %>
+
+  <%= form_with(model: @teacher, local: true) do |form| %>
+<div class="actions">
+    <%= form.label "Add a Student"%>
+    <%= form.collection_select(:student_ids, Student.all, :id, :student_name, { :multiple => true }) %>
+    <%= form.submit %>
+  </div>
+  <% end %>

@@ -1,4 +1,4 @@
-<%=
+<%
 calendar = []
 dibels = []
 accuracy = []
@@ -18,6 +18,68 @@ i = 0
   const noQuotes = noBracket2.replace(/"/g, '')
   const calendarJsArray = noQuotes.split(", ")
   
+  // var ctx = document.getElementById('myChart');
+  // var myChart = new Chart(ctx, {
+  //   type: 'line',
+  //   data: {
+  //     labels: calendarJsArray,
+  //     datasets: [{
+  //       label: 'Dibels',
+  //       yAxisID: 'A',
+  //       data: <%=dibels%>,
+  //       fill:false,
+  //       borderColor:"#308af3",
+  //       pointBackgroundColor: "#308af3",
+  //       pointBorderWidth: 2,
+  //       pointHoverBackgroundColor: "#fff",
+  //       pointHoverBorderWidth: 2,
+  //       lineTension:0.05,
+  //     }, {
+  //       label: 'Accuracy',
+  //       yAxisID: 'B',
+  //       data: <%=accuracy%>,
+  //       fill:false,
+  //       borderColor:"#48ba16",
+  //       pointBackgroundColor: "#48ba16",
+  //       pointBorderWidth: 2,
+  //       pointHoverBackgroundColor: "#fff",
+  //       pointHoverBorderWidth: 2,
+  //       lineTension:0.05
+  //     }]
+  //   },
+  //   options: {
+  //     plugins: {
+  //       title: {
+  //         display: true,
+  //         text: 'DIBELS and Accuracy'
+  //       },
+  //     },
+  //     scales: {
+  //       yAxes: [{
+  //         id: 'A',
+  //         type: 'linear',
+  //         position: 'left',
+  //         title: {
+  //           display: true,
+  //           text: "DIBELS Correct WPM"
+  //         },
+  //       }, {
+  //         id: 'B',
+  //         type: 'linear',
+  //         position: 'right',
+  //         ticks: {
+  //           max: 1,
+  //           min: 0
+  //         },
+  //         title: {
+  //           display: true,
+  //           text: "DIBELS Correct WPM"
+  //         }
+  //       }]
+  //     }
+  //   }
+  // });
+  
   var ctx = document.getElementById('myChart');
   var myChart = new Chart(ctx, {
     type: 'line',
@@ -33,7 +95,7 @@ i = 0
         pointBorderWidth: 2,
         pointHoverBackgroundColor: "#fff",
         pointHoverBorderWidth: 2,
-        lineTension:0.05
+        lineTension:0.05,
       }, {
         label: 'Accuracy',
         yAxisID: 'B',
@@ -48,17 +110,22 @@ i = 0
       }]
     },
     options: {
+      plugins: {
+        title: {
+          display: true,
+          text: 'DIBELS and Accuracy'
+        },
+      },
       scales: {
-        yAxes: [{
-          id: 'A',
+        A: {
           type: 'linear',
           position: 'left',
-        
+          title: {
             display: true,
             text: "DIBELS Correct WPM"
-          
-        }, {
-          id: 'B',
+          },
+        },
+        B: {
           type: 'linear',
           position: 'right',
           ticks: {
@@ -67,9 +134,15 @@ i = 0
           },
           title: {
             display: true,
-            text: "DIBELS Correct WPM"
+            text: "Accuracy"
           }
-        }]
+        },
+        x: {
+          title: {
+            display: true,
+            text: 'Date'
+          }
+        }
       }
     }
   });
@@ -82,7 +155,7 @@ i = 0
 <br>
 <br>
 <br>
-<%= pie_chart Student.group(:teacher_id).count %>
+<% pie_chart Student.group(:teacher_id).count %>
 <br>
 <br>
 <br>
@@ -91,7 +164,7 @@ i = 0
 <br>
 <br>
 <br>
-<%= line_chart @progresses.pluck(:date, :dibels), xtitle: "Date", ytitle: "DIBELS Correct WPM", curve: false%>
+<% line_chart @progresses.pluck(:date, :dibels), xtitle: "Date", ytitle: "DIBELS Correct WPM", curve: false%>
 <br>
 <br>
 <br>
@@ -100,7 +173,7 @@ i = 0
 <br>
 <br>
 <br>
-<%= line_chart [
+<% line_chart [
 {:name=>'DIBELS', :data=>@progresses.pluck(:date, :dibels), :yAxisID=>'leftAxis'},
 {:name=> 'Accuracy', :data=>@progresses.pluck(:date, :accuracy), :yAxisID=> 'rightAxis'}
 ], library: {
@@ -130,35 +203,3 @@ id: 'rightAxis'
 <br>
 <br>
 <br>
-<%# <%= line_chart  %>
-[
-{:name=>'DIBELS', :data=>@progresses.pluck(:date, :dibels), :yAxisID=>'leftAxis'},
-{:name=> 'Accuracy', :data=>@progresses.pluck(:date, :accuracy), :yAxisID=> 'rightAxis'}
-], library: {
-scales: {
-y: {
-type: 'linear',
-position: 'left',
-display: true,
-},
-y1: {
-type: 'linear',
-position: 'right',
-display: true,
-}
-}
-}, xtitle: "Date", curve: false %>
-# dataset:
-# [{
-#   label: 'Dataset 1',
-#   data: @progresses.pluck(:date, :dibels),
-#   yAxisID: 'y'
-# },
-# { 
-#   label: 'Dataset 2',
-#   data: @progresses.pluck(:date, :accuracy),
-#   yAxisID: 'y1'
-# }],
-# [
-#   {name: "DIBELS", dataset: @progresses.pluck(:date, :dibels)},
-#   {name: "Accuracy", dataset: @progresses.pluck(:date, :accuracy)} 
