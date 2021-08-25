@@ -1,16 +1,18 @@
-<table class="table table-striped mt-3">
-  <thead>
-    <tr>
-      <th scope="col"style="width:25%;">Teacher</th>
-      <th scope="col">Students</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @teachers.order(:last_name).each do |teacher| %>
+<div class="table-responseive">
+  <table class="table table-striped mt-3">
+    <thead>
       <tr>
-        <th scope="row"><%= link_to "#{ teacher.last_name}, #{teacher.first_name}", teacher_path(teacher)%></th>
-        <td><%= pluralize(teacher.students.size, 'Student')%></td>
+        <th scope="col"style="width:25%;">Teacher</th>
+        <th scope="col">Students</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @teachers.order(:last_name).each do |teacher| %>
+        <tr>
+          <th scope="row" class="grid-col-1"><%= link_to "#{ teacher.last_name}, #{teacher.first_name}", teacher_path(teacher)%></th>
+          <td><%= pluralize(teacher.students.size, 'Student')%></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

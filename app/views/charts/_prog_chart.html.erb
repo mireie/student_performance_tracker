@@ -1,16 +1,14 @@
+<canvas id="myChart" width="960" height="400"></canvas>
 <%
 calendar = []
 dibels = []
 accuracy = []
-i = 0
-@progresses.order(:date).each { |x|
+@student.progresses.order(:date).each { |x|
   dibels.push(x.dibels)
   accuracy.push(100*x.accuracy)
   calendar.push(x.date.to_s)
-  i= 1
 }
 %>
-<canvas id="myChart" width="960" height="400"></canvas>
 <script>
   const myString = '<%=raw calendar%>'
   const noBracket1 = myString.replace(/^./g, '')
@@ -42,8 +40,6 @@ i = 0
   
         return lr;
   }
-  
-  
   
   let x = [];
   for (let i=0; i < calendarJsArray.length; i++) {
@@ -112,13 +108,10 @@ i = 0
           type: 'linear',
           position: 'left',
           min: 0,
-          max: 200,
+          // max: 200,
           grid: {
             tickColor: '#ff7264',
             color: '#ff7264'
-          },
-          ticks: {
-  
           },
           title: {
             display: true,
@@ -134,9 +127,6 @@ i = 0
             drawOnChartArea: false,
             color: '#505AC7',
             tickColor: '#505AC7',
-          },
-          ticks: {
-  
           },
           title: {
             display: true,

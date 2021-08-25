@@ -1,5 +1,6 @@
 class StudentsController < ApplicationController
   before_action :set_student, only: %i[ show edit update destroy ]
+  before_action :authorize_admin, only: [:edit, :update, :destroy]
 
   # GET /students or /students.json
   def index
@@ -54,7 +55,7 @@ class StudentsController < ApplicationController
   def destroy
     @student.destroy
     respond_to do |format|
-      format.html { redirect_to students_url, notice: "Student was successfully destroyed." }
+      format.html { redirect_to students_url, notice: "Student was successfully removed." }
       format.json { head :no_content }
     end
   end
@@ -69,6 +70,6 @@ class StudentsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def student_params
       # params.fetch(:student, {})
-      params.require(:student).permit(:first_name, :last_name, :teacher_id)
+      params.require(:student).permit(:first_name, :last_name, :teacher_id, :active)
     end
 end

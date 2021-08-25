@@ -1,3 +1,4 @@
+<%= content_for(:title, "#{@student.last_name}, #{@student.first_name} | Add DIBELS score") %>
 <h1>Add a new DIBELS score:</h1>
 <%= form_for [@student, @progress] do |form| %>
     <table class="table table-warning table-striped mt-3">

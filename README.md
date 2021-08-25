@@ -64,3 +64,33 @@ Co-authored-by: Dave Lindqvist <lindqvist.dave@gmail.com>
     <%= form.submit %>
   </div>
   <% end %>
+
+  <% if @teacher.students.any? %>
+
+<div class="table-responseive">
+  <table class="table table-striped mt-3">
+    <thead>
+      <tr>
+        <th scope="col">Student</th>
+        <th scope="col">Last Benchmark</th>
+        <th scope="col">Last Progress Check</th>
+        <th scope="col">Average Progress DIBELS</th>
+        <th scope="col">Average Progress Accuracy</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @teacher.students.order(:last_name).each do |student| %>
+        <tr>
+          <th scope="row" class="grid-col-1"><%= link_to "#{student.last_name}, #{student.first_name}", student_path(student)%></th>
+          <td><%= student.last_benchmark_date%></td>
+          <td><%= student.last_progress_date%></td>
+          <td><%= student.avg_progress_dibels%></td>
+          <td><%= student.avg_progress_accuracy %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<% else %>
+  <p>There are no students assigned to this teacher</p>
+<% end %>

@@ -2,24 +2,29 @@
   <% if student.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(student.errors.count, "error") %> prohibited this student from being saved:</h2>
-
       <ul>
-      <% student.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% student.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
-
   <div class="actions">
-    <%= form.label :First_Name %>:
-    <%= form.text_field :first_name, class:"form-control" %>
-    <%= form.label :Last_Name %>:
-    <%= form.text_field :last_name, class:"form-control" %>
+    <div class="row">
+      <div class="col">
+        <%= form.label :First_Name %>:
+        <%= form.text_field :first_name, class:"form-control" %>
+      </div>
+      <div class="col">
+        <%= form.label :Last_Name %>:
+        <%= form.text_field :last_name, class:"form-control" %>
+      </div>
+    </div>
     <%= form.label "Teacher:"%>
-    <%= form.collection_select(:teacher_id, @teachers, :id, :full_name,{}, {:class => "form-select"})%>
-    <br>
+    <%= form.collection_select(:teacher_id, Teacher.order(:last_name), :id, :full_name,{}, {:class => "form-select"})%>
+    <%= form.label :active %>:
+    <%= form.check_box :active, class:"form-check" %>
+    <hr>
     <%= form.submit class:"btn btn-primary"%>
   </div>
 <% end %>
-

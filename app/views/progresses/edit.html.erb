@@ -1,4 +1,5 @@
-<h1>Edit <%=@student.first_name%>'s DIBELS progress score:</h1>
+<%= content_for(:title, "#{@student.last_name}, #{@student.first_name} | Edit DIBELS score") %>
+<h1><%="Edit #{@student.first_name}'s DIBELS progress score" %></h1>
 <%= form_for [@student, @progress] do |form|%>
   <table class="table table-warning table-striped mt-3">
     <tbody>

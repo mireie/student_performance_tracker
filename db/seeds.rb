@@ -76,7 +76,7 @@ class Seed
         Progress.create!(
           date: Faker::Date.backward(days: 365),
           grade: rand(12),
-          dibels: rand(12),
+          dibels: rand(50..200),
           accuracy: rand().round(2),
           student_id: s.id,
         )

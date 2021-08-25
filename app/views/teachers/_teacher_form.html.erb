@@ -2,20 +2,27 @@
   <% if teacher.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(teacher.errors.count, "error") %> prohibited this teacher from being saved:</h2>
-
       <ul>
-      <% teacher.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% teacher.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
-
   <div class="actions">
-    <%= form.label :First_Name %>:
-    <%= form.text_field :first_name %>
-    <%= form.label :Last_Name %>:
-    <%= form.text_field :last_name %>
-    <%= form.submit %>
+    <div class="row">
+      <div class="col">
+        <%= form.label :First_Name %>:
+        <%= form.text_field :first_name, class: "form-control" %>
+      </div>
+      <div class="col">
+        <%= form.label :Last_Name %>:
+        <%= form.text_field :last_name, class: "form-control" %>
+      </div>
+    </div>
+    <%= form.label :active %>:
+    <%= form.check_box :active, class:"form-check" %>
+    <hr>
+    <%= form.submit  class:"btn btn-primary" %>
   </div>
 <% end %>

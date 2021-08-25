@@ -1,25 +1,25 @@
-# require 'rails_helper'
+require 'rails_helper'
 
-# describe "the add a review process" do
-#   it "adds a new review" do
-#     test_teacher = Teacher.create({:first_name => "Jackie", :last_name => "Chan"})
-#     visit teachers_path
-#     click_on ("Jackie Chan")
-#     click_on ("Add a review")
-#     fill_in "Author", :with => "Bob"
-#     fill_in "Rating", :with => "5"
-#     fill_in "review[content_body]", :with => "It a fast car go vroom vroom vroom vroom vroom vroom vroom vroom."
-#     click_on ("Create Review")
-#     expect(page).to have_content "Bob"
-#   end
+describe "the add a student process" do
+  it "adds a new student" do
+    Teacher.create({:first_name => "Jackie", :last_name => "Chan"})
+    visit students_path
+    click_on ("New Student")
+    fill_in "student[first_name]", :with => "Jack"
+    fill_in "student[last_name]", :with => "Ma"
+    select("Jackie Chan", from: 'student[teacher_id]')
+    click_on ("Create Student")
+    expect(page).to have_content "Jack Ma"
+    expect(page).to have_content "Teacher: Jackie Chan"
 
-  # it "gives an error when no author is entered" do
-  #   test_teacher = Teacher.create({:name => "Car", :cost => "15155", :country_of_origin => "Japan"})
-  #   visit teachers_path
-  #   click_on ("Car")
-  #   click_on ("Add a review")
-  #   click_on ("Create Review")
-  #   expect(page).to have_content "Author can't be blank"
-  # end
+  end
 
-# end
+it "gives an error when no student is entered" do
+  visit students_path
+  click_on ("New Student")
+  click_on ("Create Student")
+  expect(page).to have_content "First name can't be blank"
+  expect(page).to have_content "Last name can't be blank"
+
+  end
+end

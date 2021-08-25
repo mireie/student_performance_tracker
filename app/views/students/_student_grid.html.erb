@@ -1,30 +1,32 @@
-<table class="table table-striped mt-3">
-  <thead>
-    <tr>
-      <th scope="col">Student</th>
-      <th scope="col">Teacher</th>
-      <th scope="col">Last Benchmark</th>
-      <th scope="col">Last Progress Check</th>
-      <th scope="col">Average Progress DIBELS</th>
-      <th scope="col">Average Progress Accuracy</th>
+<div class="table-responseive">
+  <table class="table table-striped mt-3">
+    <thead>
       <tr>
-      </thead>
-      <tbody>
-        <% @students.order(:last_name).each do |student| %>
-          <tr>
-            <th scope="row" class="grid-col-1"><%= link_to "#{student.last_name}, #{student.first_name}", student_path(student)%></th>
-            <td class="grid-col-2">
-              <% if student.teacher %>
-                <%=link_to student.teacher.full_name, teacher_path(student.teacher)%>
-              <%else%>
-                N/A
-              <%end%>
-            </td>
-            <td><%= student.last_benchmark_date%></td>
-            <td><%= student.last_progress_date%></td>
-            <td><%= student.avg_progress_dibels%></td>
-            <td><%= student.avg_progress_accuracy %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
+        <th scope="col">Student</th>
+        <th scope="col">Teacher</th>
+        <th scope="col">Last Benchmark</th>
+        <th scope="col">Last Progress Check</th>
+        <th scope="col">Average Progress DIBELS</th>
+        <th scope="col">Average Progress Accuracy</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @students.order(:last_name).each do |student| %>
+        <tr>
+          <th scope="row" class="grid-col-1"><%= link_to "#{student.last_name}, #{student.first_name}", student_path(student)%></th>
+          <td class="grid-col-2">
+            <% if student.teacher %>
+              <%=link_to student.teacher.full_name, teacher_path(student.teacher)%>
+            <%else%>
+              N/A
+            <%end%>
+          </td>
+          <td><%= student.last_benchmark_date%></td>
+          <td><%= student.last_progress_date%></td>
+          <td><%= student.avg_progress_dibels%></td>
+          <td><%= student.avg_progress_accuracy %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

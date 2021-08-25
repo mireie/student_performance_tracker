@@ -9,7 +9,7 @@ describe "the add teacher process" do
     click_on 'Create Teacher'
     expect(page).to have_content 'Teacher was successfully created.'
     visit teachers_path
-    expect(page).to have_content 'Bob Marley'
+    expect(page).to have_content 'Marley, Bob'
   end
   
   it "gives an error when no name is entered" do

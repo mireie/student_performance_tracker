@@ -1,4 +1,4 @@
-<h1>Edit <%=@student.first_name%>'s Benchmark:</h1>
+<h1><%= content_for(:title, "Edit #{@student.first_name}'s Benchmark:") %></h1>
 
 <%= render "edit_benchmark_result"%>
 

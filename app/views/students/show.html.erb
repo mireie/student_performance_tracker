@@ -1,23 +1,31 @@
-<h2><%= @student.first_name + " " + @student.last_name%></h2>
+<%= content_for(:title, "#{@student.first_name} #{@student.last_name}") %>
+<h1><%= "#{@student.first_name} #{@student.last_name}"%>
+  <%unless @student.active?%>
+    <%= " (Inactive)"%>
+  <%end%>
+</h1>
 <% if @teacher %>
   <h4>Teacher: <%= link_to @teacher.first_name + " " + @teacher.last_name, teacher_path(@teacher) %></h4>
 <% else %>
-    <p>There is no teacher assigned to this student.</p>
+  <p>There is no teacher assigned to this student.</p>
 <% end %>
-
 <%= link_to 'Edit Student', edit_student_path(@student) %>
 <%= link_to 'Back to All Students', students_path %>
 <p><%= link_to "Delete Student", student_path( @student),
                          :data => {:confirm => "You sure?",
                                    :method => "delete"} %></p>
-
-<p id="notice"><%= notice %></p>
 <h2>Benchmark Results</h2>
 <p><%= link_to "Add a Benchmark score", new_student_benchmark_result_path(@student), class: "btn btn-primary" %></p>
 <%= render :partial => "/benchmark_results/display_benchmark_results", :locals => {:student => @student} %>
 <hr>
 <h2>Progress Results</h2>
 <p><%= link_to "Add Progress", new_student_progress_path(@student), class: "btn btn-primary" %></p>
-<%= render :partial => "/progresses/display_progress", :locals => {:student => @student} %>
-
-
+<div class="row">
+  <div class="col">
+      <%= render :partial => "/charts/prog_chart", :locals => {:student => @student} %>
+  </div>
+  <div class="row">
+    <div class="col">
+      <%= render :partial => "/progresses/display_progress", :locals => {:student => @student} %>
+    </div>
+  </div>

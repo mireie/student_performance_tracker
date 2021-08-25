@@ -1,16 +1,12 @@
-<p id="notice"><%= notice %></p>
-
-<p><%= link_to 'New Teacher', new_teacher_path, class: "btn btn-primary" %></p>
-
+<%= content_for(:title, "Teachers") %>
 <h1>Teachers</h1>
 <hr>
+<p><%= link_to 'New Teacher', new_teacher_path, class: "btn btn-primary" %></p>
 
 <div class="row">
   <div class="col">
-    <% if @teachers.any? %>
-   
+    <% if @teachers.any? %> 
       <%= render :partial => "teacher_grid", :locals => {:teachers => @teachers} %>
-    
     <% else%>
       <p>There are no teachers yet.</p>
     <% end %>

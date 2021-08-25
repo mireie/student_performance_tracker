@@ -1,5 +1,6 @@
 class TeachersController < ApplicationController
   before_action :set_teacher, only: %i[ show edit update destroy ]
+  before_action :authorize_admin, only: [:edit, :update, :destroy]
 
   # GET /teachers or /teachers.json
   def index
@@ -69,6 +70,6 @@ class TeachersController < ApplicationController
     # Only allow a list of trusted parameters through.
     def teacher_params
       # params.fetch(:teacher, {})
-      params.require(:teacher).permit(:first_name, :last_name, student_ids: [])
+      params.require(:teacher).permit(:first_name, :last_name)
     end
 end

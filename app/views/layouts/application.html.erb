@@ -1,49 +1,73 @@
 <!DOCTYPE html>
-<html>
+<html class="h-100">
   <head>
-    <title>StudentPerformanceTracker</title>
+    <title><%= (yield(:title) + " | " unless yield(:title).blank?).to_s + "SPT" %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/chart.js@2.9.1/dist/Chart.min.css">
-    <%# <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.1/dist/Chart.min.js"></script> %>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.min.js"></script>
   </head>
-  <body>
-    <div class="container">
-      <div class="row">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-          <div class="container-fluid">
-            <a class="navbar-brand" href="/">Test Tracker</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavDropdown">
-              <ul class="navbar-nav">
-                <li class="nav-item">
-                  <a class="nav-link" href="/students">Students</a>
-                </li>
-              </ul>
-              <ul class="navbar-nav">
-                <li class="nav-item">
-                  <a class="nav-link" href="/teachers">Teachers</a>
-                </li>
-              </ul>
-              <div id="user-info">
-                <% if current_user %>
-                  <%= link_to current_user.email, edit_user_registration_url %> | <%= link_to "Sign out", '/users/sign_out', :method => :delete %>
-                <% else %>
-                  <%= link_to "Sign up", '/users/sign_up' %> | <%= link_to "Sign in", '/users/sign_in'%>
-                <% end %>
+  <body lass="d-flex flex-column h-100">
+    <main class="flex-shrink-0">
+      <div class="container">
+        <div class="row">
+          <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="/">SPT</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link" href="/students">Students</a>
+                  </li>
+                </ul>
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link" href="/teachers">Teachers</a>
+                  </li>
+                </ul>
+                <div id="user-info">
+                  <% if current_user %>
+                    <%= link_to current_user.email, edit_user_registration_url %> | <%= link_to "Sign out", '/users/sign_out', :method => :delete %>
+                  <% else %>
+                    <%= link_to "Sign up", '/users/sign_up' %> | <%= link_to "Sign in", '/users/sign_in'%>
+                  <% end %>
+                </div>
               </div>
             </div>
+          </nav>
+          <%if flash[:alert] %>
+            <div class="alert alert-danger mt-3" role="alert">
+              <%= flash[:alert] %>
+            </div>
+          <%end%>
+          <%if flash[:notice] %>
+            <div class="alert alert-success mt-3" role="alert">
+              <%= flash[:notice] %>
+            </div>
+          <%end%>
+          <div class="row">
+            <div class="col mt-3">
+              <%= yield %>
+            </div>
           </div>
-        </nav>
-        <%= flash[:alert] %>
-        <%= flash[:notice] %>
-        <%= yield %>
+        </div>
       </div>
+    </main>
+    <footer class="footer mt-auto py-3 bg-light" id="sticky-footer">
+      <div class="container">
+        <span class="text-muted" style="display:flex">Made by&nbsp; 
+          <a href="https://github.com/giang184">Andrew Giang</a>, &nbsp;
+          <a href="https://github.com/krishops">Kristen Hopper</a>, &nbsp;
+          <a href="https://github.com/gengur123">Aurthur Lee</a>, &nbsp;
+          <a href="https://github.com/dqveha">Dave Lindqvist</a>, and &nbsp;
+          <a href="https://github.com/mireie">Michael Reiersgaard</a>
+        </a> <span style="margin-left:auto"><a href="https://github.com/mireie/student_performance_tracker">View project on GitHub</a></span></span>
     </div>
-  </body>
+  </footer>
+</body>
 </html>
