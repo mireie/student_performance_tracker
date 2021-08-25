@@ -1,0 +1,16 @@
+<table class="table table-striped mt-3">
+  <thead>
+    <tr>
+      <th scope="col">Teacher</th>
+      <th scope="col">Students</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @teachers.order(:last_name).each do |teacher| %>
+      <tr>
+        <th scope="row"><%= link_to "#{ teacher.last_name}, #{teacher.first_name}", teacher_path(teacher)%></th>
+        <td><%= pluralize(teacher.students.size, 'Student')%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -12,9 +12,11 @@
                                    :method => "delete"} %></p>
 
 <p id="notice"><%= notice %></p>
+<h2>Benchmark Results</h2>
 <p><%= link_to "Add a Benchmark score", new_student_benchmark_result_path(@student), class: "btn btn-primary" %></p>
 <%= render :partial => "/benchmark_results/display_benchmark_results", :locals => {:student => @student} %>
 <hr>
+<h2>Progress Results</h2>
 <p><%= link_to "Add Progress", new_student_progress_path(@student), class: "btn btn-primary" %></p>
 <%= render :partial => "/progresses/display_progress", :locals => {:student => @student} %>
 

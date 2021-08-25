@@ -40,6 +40,9 @@ class Student < ApplicationRecord
     end
   end
 
+  def student_name
+    self.first_name + " " + self.last_name
+  end
 
   before_save(:capitalize_name)
 

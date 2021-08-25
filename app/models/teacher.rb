@@ -7,6 +7,9 @@ class Teacher < ApplicationRecord
   before_save(:capitalize_name)
 
   
+  def full_name
+    self.first_name + " " + self.last_name
+  end
 
   private
 
@@ -15,7 +18,4 @@ class Teacher < ApplicationRecord
     self.last_name = self.last_name.capitalize
   end
 
-  def full_name
-    self.first_name + " " + self.last_name
-  end
 end

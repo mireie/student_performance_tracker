@@ -11,6 +11,8 @@ class TeachersController < ApplicationController
   def show
     @teacher = Teacher.find(params[:id])
     @students = @teacher.students.page(params[:page])
+    @teachers = Teacher.all
+    # @all_students = Student.all
     render :show
   end
 
@@ -68,6 +70,6 @@ class TeachersController < ApplicationController
     # Only allow a list of trusted parameters through.
     def teacher_params
       # params.fetch(:teacher, {})
-      params.require(:teacher).permit(:first_name, :last_name)
+      params.require(:teacher).permit(:first_name, :last_name, student_ids: [])
     end
 end

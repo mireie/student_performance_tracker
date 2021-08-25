@@ -36,3 +36,23 @@ Co-authored-by: Andrew Giang <giang184@gmail.com>
 Co-authored-by: Kristen Hopper <hopperdavis@gmail.com>
 Co-authored-by: Arthur Lee <meleearthur@gmail.com>
 Co-authored-by: Dave Lindqvist <lindqvist.dave@gmail.com>
+
+
+
+
+<%= form_with(model: @teachers, local: true) do |form| %>
+<div class="actions">
+    <%= form.label "Add a Student"%>
+    <%= form.collection_select :teacher_id, @teachers, :id, :full_name%>
+    <%= form.submit %>
+  </div>
+  <% end %>
+
+  <%= form_with(model: @teacher, local: true) do |form| %>
+<div class="actions">
+    <%= form.label "Add a Student"%>
+    <%= form.collection_select :student, Student.all, :id, :student_name%>
+    <K>
+    <%= form.submit %>
+  </div>
+  <% end %>

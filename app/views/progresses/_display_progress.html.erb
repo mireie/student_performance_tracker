@@ -10,12 +10,12 @@
     <tr>
     </thead>
     <tbody>
-    <% @student.progresses.each do |progress| %>
+    <% @student.progresses.order(:date).reverse_order.each do |progress| %>
       <tr>
         <th scope="row"><%= link_to progress.date, edit_student_progress_path(@student, progress.id) %></th>
         <td><%= progress.grade %></td>
         <td><%= progress.dibels %></td>
-        <td><%= progress.accuracy %></td>
+        <td><%= "#{(progress.accuracy*100).round(2)}%" %></td>
         </tr>
         <% end %>
       </tbody>

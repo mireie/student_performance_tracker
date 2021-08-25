@@ -13,7 +13,13 @@
         <% @students.order(:last_name).each do |student| %>
           <tr>
             <th scope="row"><%= link_to "#{student.last_name}, #{student.first_name}", student_path(student)%></th>
-            <td><%= link_to "#{student.teacher.first_name} #{student.teacher.last_name}", teacher_path(student.teacher) %></td>
+            <td>
+              <% if student.teacher %>
+                <%=link_to student.teacher.full_name, teacher_path(student.teacher)%>
+              <%else%>
+                N/A
+              <%end%>
+            </td>
             <td><%= student.last_benchmark_date%></td>
             <td><%= student.last_progress_date%></td>
             <td><%= student.avg_progress_dibels%></td>

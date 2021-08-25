@@ -1,26 +1,29 @@
-<h1>Edit student's DIBELS scores:</h1>
-  <%= form_for [@student, @progress] do |form|%>
-    <table class="table table-warning table-striped mt-3">
+<h1>Edit <%=@student.first_name%>'s DIBELS progress score:</h1>
+<%= form_for [@student, @progress] do |form|%>
+  <table class="table table-warning table-striped mt-3">
     <tbody>
-    <tr>
+      <tr>
         <td><%= form.label :date %></td>
         <td><%= form.date_field :date, class: "form-control" %></td>
-    </tr>
-    <tr>
+      </tr>
+      <tr>
         <td><%= form.label :grade %></td>
-        <td><%= form.number_field :grade, min: 0, class: "form-control" %></td>
-    </tr>
-    <tr>
+        <td><%= form.number_field :grade, min: 0, step: 0.01, class: "form-control" %></td>
+      </tr>
+      <tr>
         <td><%= form.label :dibels, "DIBELS" %></td>
-        <td><%= form.number_field :dibels, min: 0, class: "form-control"  %></td>
-    </tr>
-    <tr>
+        <td><%= form.number_field :dibels, min: 0, step: 0.01, class: "form-control"  %></td>
+      </tr>
+      <tr>
         <td><%= form.label :accuracy %></td>
-        <td><%= form.number_field :accuracy, min: 0, class: "form-control"  %></td>
-    </tr>
-    <tr>
-        <td colspan="2"><%= form.submit class: "btn btn-primary" %></td>
-    </tr>
-</tbody>
-    </table>
-  <% end %>
+        <td><%= form.number_field :accuracy, min: 0, step: 0.01, class: "form-control"  %></td>
+      </tr>
+      <tr>
+        <td colspan="2"><%= form.submit class: "btn btn-primary" %>
+          <span class="btn btn-danger"><%= link_to "Delete Progress Score", student_progress_path(@progress),
+                         :data => {:confirm => "You sure?",
+                                   :method => "delete"} %></span></td>
+      </tr>
+    </tbody>
+  </table>
+<% end %>

@@ -1,24 +1,28 @@
-<%=@progresses[0].date%>
-<br>
 <%=
-dave = []
+calendar = []
 dibels = []
 accuracy = []
-i = 1
+i = 0
 @progresses.each { |x|
   dibels.push(x.dibels)
   accuracy.push(x.accuracy)
-  dave.push(x.date)
-  i+=1
+  calendar.push(x.date.to_s)
+  i= 1
 }
 %>
 <canvas id="myChart" width="960" height="200"></canvas>
 <script>
+  const myString = '<%=raw calendar%>'
+  const noBracket1 = myString.replace(/^./g, '')
+  const noBracket2 = noBracket1.replace(/.$/g, '')
+  const noQuotes = noBracket2.replace(/"/g, '')
+  const calendarJsArray = noQuotes.split(", ")
+  
   var ctx = document.getElementById('myChart');
   var myChart = new Chart(ctx, {
     type: 'line',
     data: {
-      labels: <%=dave%>,
+      labels: calendarJsArray,
       datasets: [{
         label: 'Dibels',
         yAxisID: 'A',
@@ -49,6 +53,10 @@ i = 1
           id: 'A',
           type: 'linear',
           position: 'left',
+        
+            display: true,
+            text: "DIBELS Correct WPM"
+          
         }, {
           id: 'B',
           type: 'linear',
@@ -56,6 +64,10 @@ i = 1
           ticks: {
             max: 1,
             min: 0
+          },
+          title: {
+            display: true,
+            text: "DIBELS Correct WPM"
           }
         }]
       }

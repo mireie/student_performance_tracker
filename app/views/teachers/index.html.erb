@@ -3,15 +3,16 @@
 <p><%= link_to 'New Teacher', new_teacher_path, class: "btn btn-primary" %></p>
 
 <h1>Teachers</h1>
+<hr>
 
-<% if @teachers.any? %>
-      <div class="row">
-        <% @teachers.order(:last_name).each do |teacher| %>
-          <%= render :partial => "teacher_card", :locals => {:teacher => teacher} %>
-        <% end %>
-      </div>
-    <% else %>
+<div class="row">
+  <div class="col">
+    <% if @teachers.any? %>
+   
+      <%= render :partial => "teacher_grid", :locals => {:teachers => @teachers} %>
+    
+    <% else%>
       <p>There are no teachers yet.</p>
     <% end %>
-
-<br>
+  </div>
+</div>

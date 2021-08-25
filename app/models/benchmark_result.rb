@@ -11,14 +11,14 @@ class BenchmarkResult < ApplicationRecord
 
   def season
     month = self.date.month
-    if month.between?(1, 3)
+    if (8..11).include?(month)
+      season = "Fall"
+    elsif [12, 1, 2, 3].include?(month)
       season = "Winter"
     elsif month.between?(4, 6)
       season = "Spring"
-    elsif month.between?(7, 8)
+    elsif month === 7
       season = "Summer"
-    elsif month.between?(9, 12)
-      season = "Winter"
     else
       season = "Month Value: #{month}"
     end

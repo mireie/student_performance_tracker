@@ -13,12 +13,13 @@
 
   <div class="actions">
     <%= form.label :First_Name %>:
-    <%= form.text_field :first_name %>
+    <%= form.text_field :first_name, class:"form-control" %>
     <%= form.label :Last_Name %>:
-    <%= form.text_field :last_name %>
+    <%= form.text_field :last_name, class:"form-control" %>
     <%= form.label "Teacher:"%>
-    <%= form.collection_select :teacher_id, @teachers, :id, :full_name%>
-    <%= form.submit %>
+    <%= form.collection_select(:teacher_id, @teachers, :id, :full_name,{}, {:class => "form-select"})%>
+    <br>
+    <%= form.submit class:"btn btn-primary"%>
   </div>
 <% end %>
 
