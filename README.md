@@ -30,6 +30,17 @@ input form
 display view of score
 students have many tests
 
+Anybody can sign up - inactive until admin switch
+Admins have list of all users and ability to switch to "active"
+  New view of all users
+  New table column for active/inactive user
+  only active users can access site
+    -Migration
+    -Scope
+    -Controller Method
+    -View(s)
+    -Route
+
 
 
 Co-authored-by: Andrew Giang <giang184@gmail.com>
@@ -37,60 +48,3 @@ Co-authored-by: Kristen Hopper <hopperdavis@gmail.com>
 Co-authored-by: Arthur Lee <meleearthur@gmail.com>
 Co-authored-by: Dave Lindqvist <lindqvist.dave@gmail.com>
 
-
-
-
-<%= form_with(model: @teachers, local: true) do |form| %>
-<div class="actions">
-    <%= form.label "Add a Student"%>
-    <%= form.collection_select :teacher_id, @teachers, :id, :full_name%>
-    <%= form.submit %>
-  </div>
-  <% end %>
-
-  <%= form_with(model: @teacher, local: true) do |form| %>
-<div class="actions">
-    <%= form.label "Add a Student"%>
-    <%= form.collection_select :student, Student.all, :id, :student_name%>
-    <K>
-    <%= form.submit %>
-  </div>
-  <% end %>
-
-  <%= form_with(model: @teacher, local: true) do |form| %>
-<div class="actions">
-    <%= form.label "Add a Student"%>
-    <%= form.collection_select(:student_ids, Student.all, :id, :student_name, { :multiple => true }) %>
-    <%= form.submit %>
-  </div>
-  <% end %>
-
-  <% if @teacher.students.any? %>
-
-<div class="table-responseive">
-  <table class="table table-striped mt-3">
-    <thead>
-      <tr>
-        <th scope="col">Student</th>
-        <th scope="col">Last Benchmark</th>
-        <th scope="col">Last Progress Check</th>
-        <th scope="col">Average Progress DIBELS</th>
-        <th scope="col">Average Progress Accuracy</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @teacher.students.order(:last_name).each do |student| %>
-        <tr>
-          <th scope="row" class="grid-col-1"><%= link_to "#{student.last_name}, #{student.first_name}", student_path(student)%></th>
-          <td><%= student.last_benchmark_date%></td>
-          <td><%= student.last_progress_date%></td>
-          <td><%= student.avg_progress_dibels%></td>
-          <td><%= student.avg_progress_accuracy %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-</div>
-<% else %>
-  <p>There are no students assigned to this teacher</p>
-<% end %>

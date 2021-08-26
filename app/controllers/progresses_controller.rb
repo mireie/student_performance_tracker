@@ -1,4 +1,5 @@
 class ProgressesController < ApplicationController
+  before_action :active_user
 
   def index
     @student = Student.find(params[:student_id])

@@ -1,0 +1,15 @@
+<%= content_for(:title, "Students") %>
+<h1>Students (Inactive)</h1>
+<hr>
+<div class="row">
+  <div class="col">
+    <%= link_to 'New Student', new_student_path, class: "btn btn-primary" %>
+    <% if @students.any? %>
+      <%= paginate @students %>
+      <%= render :partial => "student_grid", :locals => {:students => @students} %>
+      <%= paginate @students %>
+    <% else%>
+      <p>There are no students yet.</p>
+    <% end %>
+  </div>
+</div>

@@ -13,7 +13,7 @@ describe "the add a progress process" do
     fill_in "Date", :with => "09/03/1999"
     fill_in "Grade", :with => "6"
     fill_in "DIBELS", :with => "10"
-    fill_in "Accuracy", :with => "1"
+    fill_in "Accuracy", :with => "100"
     click_on ("Create Progress")
     expect(page).to have_content "1999-09-03"
     expect(page).to have_content "6"

@@ -1,0 +1,13 @@
+<h1>Student Progress Tracker</h1>
+
+<% unless current_user %>
+<%= link_to 'Please Sign In', '/users/sign_in', class: "btn btn-primary" %>
+<% end %>
+
+<% if current_user && !current_user.active?%>
+<p>Your account has not yet been activated. Contact an administrator to activate your account.</p>
+
+<% elsif current_user %>
+<%= link_to 'Students', '/students', class: "btn btn-primary" %>
+<%= link_to 'Teachers', '/teachers', class: "btn btn-primary" %>
+<% end %>

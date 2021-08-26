@@ -6,36 +6,36 @@
         <td><%= form.date_select :date, { :discard_day => true } %></td>
       </tr>
       <tr>
-        <td><%= form.label :ge, 'GE' %></td>
-        <td><%= form.number_field :ge, min: 0, step: 0.01, class: "form-control"  %></td>
+        <td><%= form.label :ge, 'Grade Equivalence (GE)' %></td>
+        <td><%= form.number_field :ge, min: 0, max: 1000, step: 0.01, class: "form-control"  %></td>
       </tr>
       <tr>
         <td><%= form.label :vocab_ge, 'Vocab GE' %></td>
-        <td><%= form.number_field :vocab_ge, min: 0, step: 0.01, class: "form-control"  %></td>
+        <td><%= form.number_field :vocab_ge, min: 0,max: 1000, step: 0.01, class: "form-control"  %></td>
       </tr>
       <tr>
         <td><%= form.label :reading_comp_ge, 'Reading Comp. GE' %></td>
-        <td><%= form.number_field :reading_comp_ge, min: 0, step: 0.01, class: "form-control"  %></td>
+        <td><%= form.number_field :reading_comp_ge, min: 0,max: 1000, step: 0.01, class: "form-control"  %></td>
       </tr>
       <tr>
-        <td><%= form.label :lnf, 'LNF' %></td>
-        <td><%= form.number_field :lnf, min: 0, step: 0.01, class: "form-control"  %></td>
+        <td><%= form.label :lnf, 'Letter Naming Fluency (LNF)' %></td>
+        <td><%= form.number_field :lnf, min: 0,max: 1000, step: 0.01, class: "form-control"  %></td>
       </tr>
       <tr>
-        <td><%= form.label :snf, 'SNF' %></td>
-        <td><%= form.number_field :snf, min: 0, step: 0.01, class: "form-control"  %></td>
+        <td><%= form.label :snf, 'Sound Naming Fluency (SNF)' %></td>
+        <td><%= form.number_field :snf, min: 0,max: 1000, step: 0.01, class: "form-control"  %></td>
       </tr>
       <tr>
         <td><%= form.label :orf_grade_lvl, 'ORF Grade Level' %></td>
-        <td><%= form.number_field :orf_grade_lvl, min: 0, step: 0.01, class: "form-control"  %></td>
+        <td><%= form.number_field :orf_grade_lvl, min: 0,max: 1000, step: 0.01, class: "form-control"  %></td>
       </tr>
       <tr>
         <td><%= form.label :orf_cwpm, 'ORF CWPM' %></td>
-        <td><%= form.number_field :orf_cwpm, min: 0, step: 0.01, class: "form-control"  %></td>
+        <td><%= form.number_field :orf_cwpm, min: 0,max: 1000, step: 0.01, class: "form-control"  %></td>
       </tr>
       <tr>
         <td><%= form.label :orf_accuracy, 'ORF Accuracy' %></td>
-        <td><%= form.number_field :orf_accuracy, min: 0, max: 1, step: 0.01, class: "form-control"  %></td>
+        <td><%= form.number_field :orf_accuracy, min: 0, max: 100, step: 0.1, class: "form-control"  %></td>
       </tr>
       <tr>
         <td colspan="2"><%= form.submit class: "btn btn-primary" %>

@@ -32,13 +32,13 @@
             <td class="table-danger"><%= q.snf %></td>
             <td class="table-danger"><%= q.orf_grade_lvl %></td>
             <td class="table-danger"><%= q.orf_cwpm %></td>
-            <td class="table-danger"><%= "#{q.orf_accuracy*100}%" %></td>
-            <td class="table-danger"><%= link_to "Edit", edit_student_benchmark_result_path(@student, q.id) %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
-<% else %>
-  <p>No results to display.</p>
-<% end %>
+            <td class="table-danger"><%= if q.orf_accuracy? then "#{q.orf_accuracy.round(2)}%" end %></td>
+              <td class="table-danger"><%= link_to "Edit", edit_student_benchmark_result_path(@student, q.id) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% else %>
+    <p>No results to display.</p>
+  <% end %>

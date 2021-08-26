@@ -1,12 +1,17 @@
 class TeachersController < ApplicationController
   before_action :set_teacher, only: %i[ show edit update destroy ]
-  before_action :require_login, only: [:new, :create]
-  before_action :authorize_admin, only: [:edit, :update, :destroy]
+  before_action :active_user, only: [:index, :show, :update]
+  before_action :authorize_admin, only: [:edit, :inactive, :destroy, :new, :create]
 
   # GET /teachers or /teachers.json
   def index
-    @teachers = Teacher.all
+    @teachers = Teacher.is_active.page(params[:page]).per(50)
     render :index
+  end
+
+  def inactive
+    @teachers = Teacher.not_active.page(params[:page]).per(50)
+    render :inactive
   end
 
   # GET /teachers/1 or /teachers/1.json
@@ -57,27 +62,28 @@ class TeachersController < ApplicationController
   def destroy
     @teacher.destroy
     respond_to do |format|
-      format.html { redirect_to teachers_url, notice: "Teacher was successfully destroyed." }
+      format.html { redirect_to teachers_url, notice: "Teacher was successfully removed." }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_teacher
-      @teacher = Teacher.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def teacher_params
-      # params.fetch(:teacher, {})
-      params.require(:teacher).permit(:first_name, :last_name)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_teacher
+    @teacher = Teacher.find(params[:id])
+  end
 
-    def require_login
-      unless logged_in?
-        flash[:alert] = "You must be logged in to access this page"
-        redirect_to '/users/sign_in'
-      end
+  # Only allow a list of trusted parameters through.
+  def teacher_params
+    # params.fetch(:teacher, {})
+    params.require(:teacher).permit(:first_name, :last_name, :active)
+  end
+
+  def require_login
+    unless logged_in?
+      flash[:alert] = "You must be logged in to access this page"
+      redirect_to "/users/sign_in"
     end
+  end
 end

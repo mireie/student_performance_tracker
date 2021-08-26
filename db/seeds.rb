@@ -11,6 +11,7 @@ class Seed
     seed.generate_students
     seed.generate_benchmark_results
     seed.generate_progresses
+    seed.generate_users
 
     puts "\nSeed Complete! Generated #{Teacher.all.size} Teachers, #{Student.all.size} Students, #{BenchmarkResult.all.size} Benchmark Results, and #{Progress.all.size} Progress Results."
   end
@@ -59,8 +60,8 @@ class Seed
           lnf: rand(100),
           snf: rand(100),
           orf_grade_lvl: rand(12),
-          orf_cwpm: rand(250),
-          orf_accuracy: rand(0.70..1).round(2),
+          orf_cwpm: rand(200),
+          orf_accuracy: rand(70..100).round(2),
           student_id: s.id,
         )
       end
@@ -77,7 +78,7 @@ class Seed
           date: Faker::Date.backward(days: 365),
           grade: rand(12),
           dibels: rand(50..200),
-          accuracy: rand(0.70..1).round(2),
+          accuracy: rand(70..100).round(2),
           student_id: s.id,
         )
       end
@@ -86,6 +87,14 @@ class Seed
   end
 
   puts "\n"
+
+  def generate_users
+    puts "Generating User Accounts \n"
+    User.create!(:email => "admin@example.com", :password => "password", :admin => true, :active => true)
+    User.create!(:email => "teacher@example.com", :password => "password", :admin => false, :active => true)
+    puts "Generated accounts: \033[103;30;51madmin@example.com, teacher@example.com\033[0m with password \033[103;30;51mpassword\033[0m \n"
+    
+  end
 end
 
 Seed.begin

@@ -6,6 +6,9 @@ class Student < ApplicationRecord
   validates :first_name, presence: true
   validates :last_name, presence: true
 
+  scope :is_active, -> {where ("active = true")}
+  scope :not_active, -> {where ("active = false")}
+
   def last_benchmark_date
     date = self.benchmark_results.order(:date)
     if date.size > 0
@@ -34,7 +37,7 @@ class Student < ApplicationRecord
 
   def avg_progress_accuracy
     if self.progresses.size > 0
-      average = self.progresses.average(:accuracy)*100
+      average = self.progresses.average(:accuracy)
       "#{average.round(2)}%"
     else
       "No progress test results"

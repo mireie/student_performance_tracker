@@ -1,12 +1,19 @@
 class StudentsController < ApplicationController
   before_action :set_student, only: %i[ show edit update destroy ]
-  before_action :require_login, only: [:new, :create]
-  before_action :authorize_admin, only: [:edit, :update, :destroy]
+  before_action :active_user, only: [:index, :show, :inactive, :update, :new, :edit, :create]
+  before_action :authorize_admin, only: [:destroy]
 
   # GET /students or /students.json
   def index
-    @students = Student.all.page(params[:page]).per(50)
+    @students = Student.is_active.page(params[:page]).per(50)
     @teachers = Teacher.all
+    render :index
+  end
+
+  def inactive
+    @students = Student.not_active.page(params[:page]).per(50)
+    @teachers = Teacher.all
+    render :inactive
   end
 
   # GET /students/1 or /students/1.json
@@ -62,22 +69,17 @@ class StudentsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_student
-      @student = Student.find(params[:id])
-      # @teacher = Teacher.find(params[:teacher_id])   #if we need this later
-    end
 
-    # Only allow a list of trusted parameters through.
-    def student_params
-      # params.fetch(:student, {})
-      params.require(:student).permit(:first_name, :last_name, :teacher_id, :active)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_student
+    @student = Student.find(params[:id])
+    # @teacher = Teacher.find(params[:teacher_id])   #if we need this later
+  end
 
-    def require_login
-      unless logged_in?
-        flash[:alert] = "You must be logged in to access this page"
-        redirect_to '/users/sign_in'
-      end
-    end
+  # Only allow a list of trusted parameters through.
+  def student_params
+    # params.fetch(:student, {})
+    params.require(:student).permit(:first_name, :last_name, :teacher_id, :active)
+  end
+
 end

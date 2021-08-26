@@ -1,4 +1,6 @@
 class BenchmarkResultsController < ApplicationController
+  before_action :active_user
+
   def index
     @student = Student.find(params[:student_id])
     @benchmark_results = @student.benchmark_results
