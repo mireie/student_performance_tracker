@@ -4,7 +4,6 @@ class BenchmarkResultsController < ApplicationController
   def index
     @student = Student.find(params[:student_id])
     @benchmark_results = @student.benchmark_results
-
     render :index
   end
 

@@ -16,8 +16,6 @@ accuracy = []
   noBracket2 = noBracket1.replace(/.$/g, '')
   noQuotes = noBracket2.replace(/"/g, '')
   calendarJsArray = noQuotes.split(", ")
-  let test = new Date(calendarJsArray[0]);
-  console.log(test)
   newCalendar = calendarJsArray.map(function(element) {
     return new Date(element);
   });
@@ -121,7 +119,6 @@ accuracy = []
           type: 'linear',
           position: 'left',
           min: 0,
-          // max: 200,
           grid: {
             tickColor: '#ff7264',
             color: '#ff7264'

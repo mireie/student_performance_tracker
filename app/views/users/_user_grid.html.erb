@@ -11,10 +11,10 @@
     <tbody>
       <% @users.order(:email).each do |user| %>
         <tr>
-          <th scope="row" class="grid-col-1"><%=user.email%></th>
-          <td><%= user.admin.to_s.titleize %></td>
+          <th scope="row" class="grid-col-1"><%=user.email%> <%= if user.id === current_user.id then ' (You)' end %></th>
+          <td><%= user.admin.to_s.titleize%></td>
           <td><%= user.active.to_s.titleize %></td>
-          <td><%= if user.id != current_user.id then button_to 'Toggle Active', {:method=> "toggle_active", :id => user.id}, {class: "btn btn-warning"} end %></td>
+          <td><%= if user.id != current_user.id then button_to 'Toggle Active', {:method=> "toggle_active", :id => user.id}, {class: "btn btn-warning"} else "You cannot disable yourself" end %></td>
         </tr>
       <% end %>
     </tbody>
