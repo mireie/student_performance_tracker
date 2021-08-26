@@ -1,64 +1,15 @@
-<!-- # MVP
-* Models (Tests, Users (Admin/Teacher), Students)
-* Users // Any admin/teacher can add/read a student
-  * Admin (CRUD)
-  * Teacher (CR)
-* 4 Tests
-  * 3 top = quarterly // color code this to make it more visible?
-  * 1 bottom-left = biweekly
-* Views
-  * Student Single Display
-
-# MVP (Finished)
-* Quarterly test tables
-* DIBELS test tables
-* Student tables
-
-
-# Flex
-* Admin to add a new test suite
-* Add date range, trend line to graph
-* Add middle name to students? ID? (to make them unique in the database)
-* Update date entry within quarterlies to a drop-down selection
-* Update table to look like THIS: https://examples.bootstrap-table.com/index.html?bootstrap5
-
-https://cdn.discordapp.com/attachments/869663850100846603/877695496938987540/Image_8-17-21_at_10.17_PM.JPG 
-https://chartkick.com/
-https://shortcake.com/
-
-input form
-display view of score
-students have many tests
-
-Anybody can sign up - inactive until admin switch
-Admins have list of all users and ability to switch to "active"
-  New view of all users
-  New table column for active/inactive user
-  only active users can access site
-    -Migration
-    -Scope
-    -Controller Method
-    -View(s)
-    -Route
-
-
-
-Co-authored-by: Andrew Giang <giang184@gmail.com>
-Co-authored-by: Kristen Hopper <hopperdavis@gmail.com>
-Co-authored-by: Arthur Lee <meleearthur@gmail.com>
-Co-authored-by: Dave Lindqvist <lindqvist.dave@gmail.com> -->
-
 # Student Performance Tracker
 
-#### A web application designed for educators to keep track of their students' scores.
+#### **A web application designed for educators to keep track of their students' scores**.
+
 
 #### Contributions By:
 
-* Andrew Giang <giang184[at]gmail[dot]com>
-* Kristen Hopper <hopperdavis[at]gmail[dot]com>
-* Arthur Lee <meleearthur[at]gmail[dot]com>
-* Dave Lindqvist <lindqvist[dot]dave[at]gmail[dot]com>
-* Michael Reiersgaard <Michael[dot]Reiersgaard[at]gmail[dot]com>
+* _Andrew Giang <giang184[at]gmail[dot]com>_
+* _Kristen Hopper <hopperdavis[at]gmail[dot]com>_
+* _Arthur Lee <meleearthur[at]gmail[dot]com>_
+* _Dave Lindqvist <lindqvist[dot]dave[at]gmail[dot]com>_
+* _Michael Reiersgaard <Michael[dot]Reiersgaard[at]gmail[dot]com>_
 
 ## Technologies Used
 
@@ -132,20 +83,3 @@ The above copyright notice and this permission notice shall be included in all c
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-
-<!-- ## Presentation 
-
-1. Michael
-- Overview
-- Before / After
-
-Kristen
-- Auth
-  - Assign active/inactive to users
-
-Dave/Andrew
-- Dave: How we got Chart.js to work; lack of documentation to configure charts using Chartkick and therefore focused more to work with Javascript Chart.js; mindful of versions being documented by other tutorials; didn't require controller, model - just view
-- Andrew: Regression line, different configurations, explain why gaps plateaus
-
-Arthur 
-- Can talk about what a teacher can make use of when using this website such as creating a teacher. Creating a student and assigning it to the teacher. Then taking about adding some DIBELS Result, Benchmark Results all in an orderly fashion. Once that's done, pass it on to Dave or Andrew. -->
