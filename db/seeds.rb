@@ -2,7 +2,7 @@ class Seed
   def self.begin
     puts "Cleaning up after the last mess, please wait a moment..."
 
-    [Teacher, Student, BenchmarkResult, Progress].each do |c|
+    [Teacher, Student, BenchmarkResult, Progress, User].each do |c|
       c.destroy_all
     end
     puts "Done!"
