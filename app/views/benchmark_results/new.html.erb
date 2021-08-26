@@ -1,5 +1,5 @@
-<% content_for(:title, "Add Student Benchmark") %>
-<h1>Add benchmark for <%=@student.first_name%> <%= @student.last_name %>:</h1>
+<% content_for(:title, "#{@student.student_name} | Add Benchmark") %>
+<h1>Add benchmark for <%=@student.student_name %>:</h1>
 
 <p><%= link_to 'Return to Student Page', student_path(@student) %></p>
 

@@ -1,5 +1,5 @@
-<%= content_for(:title, "#{@student.last_name}, #{@student.first_name} | Edit DIBELS score") %>
-<h1><%="Edit #{@student.first_name}'s DIBELS progress score" %></h1>
+<%= content_for(:title, "#{@student.student_name} | Edit DIBELS score") %>
+<h1><%="Edit #{@student.student_name}'s DIBELS progress score" %></h1>
 
 <p><%= link_to 'Return to Student Page', student_path(@student) %></p>
 

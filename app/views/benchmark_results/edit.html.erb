@@ -1,6 +1,5 @@
-<h1><%= content_for(:title, "Edit #{@student.first_name}'s Benchmark:") %></h1>
-
-<h1><%="Edit #{@student.first_name} #{@student.last_name}'s Benchmark" %></h1>
+<h1><%= content_for(:title, "#{@student.student_name} | Edit Benchmark") %></h1>
+<h1><%="Edit #{@student.student_name}'s Benchmark" %></h1>
 
 <p><%= link_to 'Return to Student Page', student_path(@student) %></p>
 

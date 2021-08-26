@@ -1,4 +1,4 @@
-<h2><%= link_to "#{@student.first_name} #{@student.last_name}", @student %></h2>
+<h2><%= link_to "#{@student.student_name}", @student %></h2>
 <p><%= link_to "Add a Benchmark score", new_student_benchmark_result_path, class: "btn btn-primary" %></p>
 
 <%= render :partial => "display_benchmark_results", :locals => {:student => @student, :benchmark_results => @student.benchmark_results}  %>
