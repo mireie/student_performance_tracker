@@ -1,4 +1,5 @@
 class StudentsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_student, only: %i[ show edit update destroy ]
   before_action :active_user, only: [:index, :show, :inactive, :update, :new, :edit, :create]
   before_action :authorize_admin, only: [:destroy]
