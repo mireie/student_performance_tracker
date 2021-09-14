@@ -1,7 +1,7 @@
 class TeachersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_teacher, only: %i[ show edit update destroy ]
-  before_action :active_user, only: [:index, :show, :update]
+  before_action :active_user, only: [:index, :show]
   before_action :authorize_admin, only: [:edit, :inactive, :destroy, :new, :create]
 
   # GET /teachers or /teachers.json
