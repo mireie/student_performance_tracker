@@ -30,4 +30,4 @@
 /coverage
 
 # Ignore Dumps
-*.dump
+*.dump*
