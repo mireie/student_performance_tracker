@@ -1,5 +1,5 @@
 class Student < ApplicationRecord
-  belongs_to :teacher
+  belongs_to :teacher, optional: true
   has_many :benchmark_results, dependent: :destroy
   has_many :progresses, dependent: :destroy
 

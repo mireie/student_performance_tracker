@@ -20,7 +20,7 @@ class StudentsController < ApplicationController
   # GET /students/1 or /students/1.json
   def show
     @student = Student.find(params[:id])
-    @teacher = Teacher.find(@student.teacher_id)
+    @student.teacher_id? {@teacher = Teacher.find(@student.teacher_id)}
     render :show
   end
 
