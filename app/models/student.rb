@@ -6,14 +6,14 @@ class Student < ApplicationRecord
   validates :first_name, presence: true
   validates :last_name, presence: true
 
-  scope :is_active, -> {where ("active = true")}
-  scope :not_active, -> {where ("active = false")}
+  scope :is_active, -> { where ("active = true") }
+  scope :not_active, -> { where ("active = false") }
 
   def self.search(query)
-    Student.where('LOWER(last_name) LIKE LOWER(?)', "%#{query}%")
-    .or(Student.where('LOWER(first_name) LIKE LOWER(?)', "%#{query}%"))
+    Student.where("LOWER(last_name) LIKE LOWER(?)", "%#{query}%")
+      .or(Student.where("LOWER(first_name) LIKE LOWER(?)", "%#{query}%"))
   end
-  
+
   def last_benchmark_date
     date = self.benchmark_results.order(:date)
     if date.size > 0
@@ -33,15 +33,15 @@ class Student < ApplicationRecord
   end
 
   def avg_progress_dibels
-    if self.progresses.size > 0
-    self.progresses.average(:dibels).to_f.round(2)
+    if self.progresses.size > 0 && self.progresses.sum(:dibels) > 0
+        self.progresses.average(:dibels).to_f.round(2)
     else
       "No progress test results"
     end
   end
 
   def avg_progress_accuracy
-    if self.progresses.size > 0
+    if self.progresses.size > 0 && self.progresses.sum(:accuracy) > 0
       average = self.progresses.average(:accuracy)
       "#{average.round(2)}%"
     else
