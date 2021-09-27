@@ -50,4 +50,16 @@ namespace :db do
     end
     puts "Progress Scores Created: #{counter}"
   end
+  task :export_students => :environment do
+    Rails.application.eager_load!
+    file = Rails.root.join("tmp/export/export-#{Time.now.to_i}.csv")
+
+    CSV.open(file, "w") do |csv|
+      csv << Student.attribute_names
+      Student.find_each do |student|
+        csv << student.attributes.values
+      end
+    end
+    puts "Exported CSV"
+  end
 end
