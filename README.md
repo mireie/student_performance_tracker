@@ -1,6 +1,7 @@
 # Student Performance Tracker
 
 #### **A web application designed for educators to keep track of their students' scores**.
+Live Demo: https://epi-spt-demo.herokuapp.com/
 
 
 #### Contributions By:
