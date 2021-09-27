@@ -1,11 +1,36 @@
 <%= content_for(:title, "Students") %>
-<h1>Students</h1>
+<div class="row">
+  <div class="col">
+    <h1>Students</h1>
+  </div>
+  <div class="col d-flex justify-content-end">
+    <div class="align-self-center">
+      <%= link_to 'New Student', new_student_path, class: "btn btn-primary" %>
+    </div>
+  </div>
+</div>
 <hr>
 <div class="row">
   <div class="col">
-    <%= link_to 'New Student', new_student_path, class: "btn btn-primary" %>
     <% if @students.any? %>
-      <%= paginate @students %>
+      <strong>Search by Name</strong>
+      <div class="row">
+        <div class="col-sm-3">
+          <div class="row">
+            <div class="col">
+              <%= form_tag(students_path, method: :get) do%>
+                <%= text_field_tag(:search, params[:search], class: "form-control") %>
+              </div>
+              <div class="col-2">
+                <%= submit_tag("Search", :class => "btn btn-primary")%>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <%= paginate @students %>
+        </div>
+      </div>
       <%= render :partial => "student_grid", :locals => {:students => @students} %>
       <%= paginate @students %>
     <% else%>

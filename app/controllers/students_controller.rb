@@ -6,9 +6,18 @@ class StudentsController < ApplicationController
 
   # GET /students or /students.json
   def index
-    @students = Student.is_active.page(params[:page]).per(50)
+    if params[:search]
+      students = Student.search(params[:search])
+    else
+      students = Student.is_active
+    end
+    @students = students.page(params[:page]).per(50)
     @teachers = Teacher.all
     render :index
+  end
+
+  def search 
+    Student.search(search_params)
   end
 
   def inactive
@@ -80,7 +89,11 @@ class StudentsController < ApplicationController
   # Only allow a list of trusted parameters through.
   def student_params
     # params.fetch(:student, {})
-    params.require(:student).permit(:first_name, :last_name, :teacher_id, :active)
+    params.require(:student).permit(:first_name, :last_name, :teacher_id, :active, :grade, :search)
+  end
+
+  def search_params
+    params.permit(:query)
   end
 
 end

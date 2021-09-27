@@ -9,6 +9,11 @@ class Student < ApplicationRecord
   scope :is_active, -> {where ("active = true")}
   scope :not_active, -> {where ("active = false")}
 
+  def self.search(query)
+    Student.where('LOWER(last_name) LIKE LOWER(?)', "%#{query}%")
+    .or(Student.where('LOWER(first_name) LIKE LOWER(?)', "%#{query}%"))
+  end
+  
   def last_benchmark_date
     date = self.benchmark_results.order(:date)
     if date.size > 0
