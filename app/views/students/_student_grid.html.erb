@@ -6,8 +6,6 @@
         <th scope="col">Teacher</th>
         <th scope="col">Last Benchmark</th>
         <th scope="col">Last Progress Check</th>
-        <th scope="col">Average Progress DIBELS</th>
-        <th scope="col">Average Progress Accuracy</th>
       </tr>
     </thead>
     <tbody>
@@ -23,8 +21,6 @@
           </td>
           <td><%= student.last_benchmark_date%></td>
           <td><%= student.last_progress_date%></td>
-          <td><%= student.avg_progress_dibels%></td>
-          <td><%= student.avg_progress_accuracy %></td>
         </tr>
       <% end %>
     </tbody>
