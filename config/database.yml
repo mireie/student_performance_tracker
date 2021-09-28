@@ -32,7 +32,7 @@ development:
   #username: student_performance_tracker
 
   # The password associated with the postgres role (username).
-  # password: epicodus
+  password: epicodus
 
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have
@@ -58,8 +58,8 @@ development:
 test:
   <<: *default
   database: student_performance_tracker_test
-  # username: whain
-  # password: epicodus
+  username: whain
+  password: epicodus
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is

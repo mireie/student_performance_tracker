@@ -79,7 +79,7 @@ accuracy = []
       }, {
         label: 'DIBELS',
         yAxisID: 'A',
-        data: <%=dibels%>,
+        data: <%=dibels%>.map(a => a == 0 ? "N/A" : a),
         fill:'origin',
         backgroundColor: '#ff72644d',
         borderColor:"#ff7264",
