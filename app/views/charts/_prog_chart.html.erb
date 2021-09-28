@@ -44,7 +44,6 @@ accuracy = []
   
         return lr;
   }
-  console.log(newCalendar[1]-newCalendar[0])
   x = [];
   for (let i=0; i < newCalendar.length; i++) {
     //calculate the date difference between current point and the beginning point
@@ -81,17 +80,18 @@ accuracy = []
         label: 'DIBELS',
         yAxisID: 'A',
         data: <%=dibels%>,
-        fill:false,
+        fill:'origin',
+        backgroundColor: '#ff72644d',
         borderColor:"#ff7264",
         pointBackgroundColor: "#ff7264",
         pointBorderWidth: 2,
-        pointHoverBackgroundColor: "#fff",
+        pointHoverBackgroundColor: "#ff7264",
         pointHoverBorderWidth: 2,
         lineTension:0.05,
       }, {
         label: 'Accuracy',
         yAxisID: 'B',
-        data: <%=accuracy%>,
+        data: <%=accuracy%>.map(a => a == 0 ? "N/A" : a),
         fill:false,
         borderColor:"#505AC7",
         pointBackgroundColor: "#505AC7",
