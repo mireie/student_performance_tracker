@@ -1,15 +1,17 @@
 <h1>Student Progress Tracker</h1>
-
 <p>Welcome to the student progress tracker.</p>
-
 <% unless current_user %>
-<%= link_to 'Please Sign In', '/users/sign_in', class: "btn btn-primary" %>
+  <%= link_to 'Please Sign In', '/users/sign_in', class: "btn btn-primary" %>
 <% end %>
-
 <% if current_user && !current_user.active?%>
-<p>Your account has not yet been activated. Contact an administrator to activate your account.</p>
-
+  <p>Your account has not yet been activated. Contact an administrator to activate your account.</p>
 <% elsif current_user %>
-<%= link_to 'View active students', '/students', class: "btn btn-primary" %>
-<%= link_to 'View active teachers', '/teachers', class: "btn btn-primary" %>
+  <%= link_to 'View active students', '/students', class: "btn btn-primary" %>
+  <%= link_to 'View active teachers', '/teachers', class: "btn btn-primary" %>
+  <% if @teachers.any? %>
+    <h2>Teachers</h2>
+    <%= render :partial => "./teachers/teacher_grid", :locals => {:teachers => @teachers} %>
+  <% else%>
+    <p>There are no teachers yet.</p>
+  <% end %>
 <% end %>
