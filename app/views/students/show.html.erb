@@ -6,8 +6,8 @@
         <%= " (Inactive)"%>
       <%end%>
     </h1>
-    <% if @teacher %>
-      <h4>Teacher: <%= link_to @teacher.full_name, teacher_path(@teacher) %></h4>
+    <% if @student.teacher %>
+      <h4>Teacher: <%= link_to @student.teacher.full_name, teacher_path(@student.teacher) %></h4>
     <% else %>
       <p>There is no teacher assigned to this student.</p>
     <% end %>
