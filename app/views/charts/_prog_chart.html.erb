@@ -4,8 +4,8 @@ calendar = []
 dibels = []
 accuracy = []
 @student.progresses.order(:date).each { |x|
-  if x.dibels? then dibels.push(x.dibels) end
-  if x.accuracy? then accuracy.push(x.accuracy) end
+  if x.dibels? then dibels.push(x.dibels) else dibels.push(0) end
+  if x.accuracy? then accuracy.push(x.accuracy) else accuracy.push(0) end
   if x.dibels? then calendar.push(x.date.to_s) end
 }
 %>

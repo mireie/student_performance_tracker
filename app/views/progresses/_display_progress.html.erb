@@ -14,9 +14,9 @@
             <% @student.progresses.order(:date).reverse_order.each do |progress| %>
               <tr>
                 <th scope="row"><%= progress.date %></th>
-                <td><%= if progress.grade? then progress.grade.round(0) end %></td>
-                <td><%= if progress.dibels? then progress.dibels.round(0) end %></td>
-                <td><%= if progress.accuracy? then "#{progress.accuracy.round(2)}%" end %></td>
+                <td><%= if progress.grade? then progress.grade.round(0) else 0 end %></td>
+                <td><%= if progress.dibels? then progress.dibels.round(0) else 0 end %></td>
+                <td><%= if progress.accuracy? then "#{progress.accuracy.round(2)}%" else 0 end %></td>
                 <td><%= link_to "Edit", edit_student_progress_path(@student, progress.id) %></td>
               </tr>
             <% end %>
