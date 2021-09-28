@@ -16,11 +16,12 @@ class ProgressesController < ApplicationController
   def create
     @student = Student.find(params[:student_id])
     @progress = @student.progresses.new(progress_params)
-    if @progress.save
-      flash[:notice] = "DIBLES score successfully added!"
-      redirect_to student_path(@student)
-    else
-      render :new
+    respond_to do |format|
+      if @progress.save
+        format.html { redirect_to @student, notice: "Progress Score was successfully created." }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+      end
     end
   end
 

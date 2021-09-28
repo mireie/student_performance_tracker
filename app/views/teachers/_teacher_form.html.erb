@@ -1,6 +1,6 @@
 <%= form_with(model: teacher, local: true) do |form| %>
   <% if teacher.errors.any? %>
-    <div id="error_explanation">
+    <div id="error_explanation alert-danger">
       <h2><%= pluralize(teacher.errors.count, "error") %> prohibited this teacher from being saved:</h2>
       <ul>
         <% teacher.errors.full_messages.each do |message| %>

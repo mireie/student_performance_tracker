@@ -1,5 +1,15 @@
 <%= content_for(:title, "#{@student.student_name} | Add DIBELS score") %>
 <h1>Add a new DIBELS score for <%=@student.student_name %>:</h1>
+<% if @progress.errors.any? %>
+    <div id="error_explanation" class="alert-danger">
+      <h2><%= pluralize(@progress.errors.count, "error") %> prohibited this student from being saved:</h2>
+      <ul>
+        <% student.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 
 <p><%= link_to 'Return to Student Page', student_path(@student) %></p>
 
