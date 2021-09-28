@@ -14,7 +14,7 @@ namespace :db do
       end
     end
     puts "Import Teachers deleted: #{i_t_count}"
-    filename = "/import/test-student-import.csv"
+    filename = "app/import/test-student-import.csv"
     counter = 0
     t = Time.now.to_s
     teacher_hash = { :first_name => "Import", :last_name => t }
@@ -29,7 +29,7 @@ namespace :db do
     puts "Students Created: #{counter}"
   end
   task :import_benchmarks => :environment do
-    filename = "/import/test-benchmark-results-import.csv"
+    filename = "app/import/test-benchmark-results-import.csv"
     counter = 0
     puts "Importing Benchmark Scores"
     CSV.foreach(filename, headers: true) do |row|
@@ -40,7 +40,7 @@ namespace :db do
     puts "Benchmark Scores Created: #{counter}"
   end
   task :import_progresses => :environment do
-    filename = "/import/test-progresses-import.csv"
+    filename = "app/import/test-progresses-import.csv"
     counter = 0
     puts "Importing Progress Scores"
     CSV.foreach(filename, headers: true) do |row|
