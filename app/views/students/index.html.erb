@@ -11,7 +11,7 @@
 </div>
 <hr>
 <% if @students.any? %>
-  <div class="row">
+  <div class="row align-items-end">
     <div class="col">
       <%= form_with url: '/students', method: :get, local: :true do |form|%>
         <strong><%= form.label :query, "Search by Name"%></strong>
@@ -25,7 +25,7 @@
         </div>
       <% end %>
     </div>
-    <div class="col">
+    <div class="col pagination-top ">
       <%= paginate @students %>
     </div>
   </div>
