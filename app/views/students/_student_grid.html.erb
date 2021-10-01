@@ -4,6 +4,7 @@
       <tr>
         <th scope="col">Student</th>
         <th scope="col">Teacher</th>
+        <th scope="col">Grade</th>
         <th scope="col">Last Benchmark</th>
         <th scope="col">Last Progress Check</th>
       </tr>
@@ -19,6 +20,7 @@
               N/A
             <%end%>
           </td>
+          <td><%= student.grade%></td>
           <td><%= student.get_season(student.last_benchmark_date)%></td>
           <td><%= student.last_progress_date%></td>
         </tr>

@@ -1,11 +1,12 @@
 <%= content_for(:title, "#{@student.student_name}") %>
 <div class="row" style="justify-content: space-between">
-  <div class="col">
+  <div class="col-8">
     <h1><%= @student.student_name %>
       <%unless @student.active?%>
         <%= " (Inactive)"%>
       <%end%>
     </h1>
+    <h2>Grade: <%= @student.grade %></h2>
     <% if @student.teacher %>
       <h4>Teacher: <%= link_to @student.teacher.full_name, teacher_path(@student.teacher) %></h4>
     <% else %>
@@ -21,6 +22,7 @@
     <% end %>
   </div>
 </div>
+<hr>
 <h2>Benchmark Results</h2>
 <p><%= link_to "Add a Benchmark score", new_student_benchmark_result_path(@student), class: "btn btn-primary" %></p>
 <%= render :partial => "/benchmark_results/display_benchmark_results", :locals => {:student => @student} %>

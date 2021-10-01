@@ -20,10 +20,20 @@
         <%= form.text_field :last_name, class:"form-control" %>
       </div>
     </div>
-    <%= form.label "Teacher:"%>
-    <%= form.collection_select(:teacher_id, Teacher.order(:last_name), :id, :full_name,{}, {:class => "form-select"})%>
-    <%= form.label :active %>:
-    <%= form.check_box :active, class:"form-check" %>
+    <div class="row">
+      <div class="col-2">
+        <%= form.label :grade %>:
+        <%= form.number_field :grade,  min: 0, max: 12, step: 1, class:"form-control" %>
+      </div>
+      <div class="col">
+        <%= form.label "Teacher:"%>
+        <%= form.collection_select(:teacher_id, Teacher.order(:last_name), :id, :full_name,{}, {:class => "form-select"})%>
+      </div>
+      <div class="col">
+        <%= form.label :active %>:
+        <%= form.check_box :active, class:"form-check" %>
+      </div>
+    </div>
     <hr>
     <%= form.submit class:"btn btn-primary"%>
   </div>
