@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  match 'users/:id' => 'users#destroy', :via => :delete, :as => :admin_destroy_user
   devise_for :users
   resources :students do
     resources :progresses

@@ -1,11 +1,12 @@
 <div class="table-responseive">
-  <table class="table table-striped mt-3">
+  <table class="table table-striped mt-3 align-middle">
     <thead>
       <tr>
         <th scope="col"style="width:25%;">Email</th>
         <th scope="col">Admin</th>
         <th scope="col">Active</th>
         <th scope="col">Change Active Status</th>
+        <th scope="col" class="table-danger text-end">Delete User</th>
       </tr>
     </thead>
     <tbody>
@@ -13,8 +14,9 @@
         <tr>
           <th scope="row" class="grid-col-1"><%=user.email%> <%= if user.id === current_user.id then ' (You)' end %></th>
           <td><%= user.admin.to_s.titleize%></td>
-          <td><%= user.active.to_s.titleize %></td>
+          <td <%= if !user.active? then "class=table-warning" end%>><%= user.active.to_s.titleize %></td>
           <td><%= if user.id != current_user.id then button_to 'Toggle Active', {:method=> "toggle_active", :id => user.id}, {class: "btn btn-warning"} else "You cannot disable yourself" end %></td>
+          <td class="table-danger text-end"><%= link_to "Delete User", admin_destroy_user_path(user), method: :delete, data: { confirm: "Are you sure? This cannot be undone." }, class: "btn btn-danger" %></td>
         </tr>
       <% end %>
     </tbody>

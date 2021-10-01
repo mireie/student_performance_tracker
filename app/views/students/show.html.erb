@@ -17,7 +17,7 @@
     <p><%= link_to 'Edit Student', edit_student_path(@student), class: "btn btn-warning" %></p>
     <% if current_user && current_user.admin?%>
       <p><%= link_to "Delete Student", student_path( @student),
-                         :data => {:confirm => "You sure?",
+                         :data => {:confirm => "Are you sure? This cannot be undone.",
                                    :method => "delete"}, class: "btn btn-danger" %></p>
     <% end %>
   </div>
