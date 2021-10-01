@@ -65,7 +65,7 @@ accuracy = []
     data: {
       labels: newCalendar,
       datasets: [{
-        label: 'DIBELS Trend Line',
+        label: 'ORF Trend Line',
         yAxisID: 'A',
         data: regressionY,
         pointRadius: 0,
@@ -77,7 +77,7 @@ accuracy = []
         pointHoverBorderWidth: 2,
         lineTension:0.05,
       }, {
-        label: 'DIBELS',
+        label: 'ORF',
         yAxisID: 'A',
         data: <%=dibels%>.map(a => a == 0 ? "N/A" : a),
         fill:'origin',
@@ -112,6 +112,18 @@ accuracy = []
           font: {
             size: 24
           },
+        },
+        tooltip: {
+          callbacks: {
+            label: function(context) {
+              label = context.dataset.label || ''
+              return `${label}: ${context.formattedValue}`
+            },
+            title: function(context) {
+              const titleDate = new Date(context[0].label)
+              return Intl.DateTimeFormat('en-US').format(titleDate)
+            }
+          }
         },
       },
       scales: {
