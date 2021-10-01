@@ -6,8 +6,8 @@ class StudentsController < ApplicationController
 
   # GET /students or /students.json
   def index
-    if params[:search]
-      students = Student.search(params[:search])
+    if params[:query]
+      students = Student.search(params[:query])
     else
       students = Student.is_active
     end

@@ -19,7 +19,7 @@
               N/A
             <%end%>
           </td>
-          <td><%= student.last_benchmark_date%></td>
+          <td><%= student.get_season(student.last_benchmark_date)%></td>
           <td><%= student.last_progress_date%></td>
         </tr>
       <% end %>

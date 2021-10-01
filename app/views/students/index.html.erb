@@ -10,31 +10,29 @@
   </div>
 </div>
 <hr>
-<div class="row">
-  <div class="col">
-    <% if @students.any? %>
-      <strong>Search by Name</strong>
-      <div class="row">
-        <div class="col-sm-3">
-          <div class="row">
-            <div class="col">
-              <%= form_tag(students_path, method: :get) do%>
-                <%= text_field_tag(:search, params[:search], class: "form-control") %>
-              </div>
-              <div class="col-2">
-                <%= submit_tag("Search", :class => "btn btn-primary")%>
-              <% end %>
-            </div>
+<% if @students.any? %>
+  <div class="row">
+    <div class="col">
+      <%= form_with url: '/students', method: :get, local: :true do |form|%>
+        <strong><%= form.label :query, "Search by Name"%></strong>
+        <div class="row">
+          <div class="col">
+            <%= form.text_field :query, class: "form-control" %>
+          </div>
+          <div class="col-2">
+            <%= form.submit "Search", :class => "btn btn-primary"%>
           </div>
         </div>
-        <div class="col">
-          <%= paginate @students %>
-        </div>
-      </div>
-      <%= render :partial => "student_grid", :locals => {:students => @students} %>
+      <% end %>
+    </div>
+    <div class="col">
       <%= paginate @students %>
-    <% else%>
-      <p>There are no students yet.</p>
-    <% end %>
+    </div>
   </div>
+  <%= render :partial => "student_grid", :locals => {:students => @students} %>
+  <%= paginate @students %>
+<% else%>
+  <p>There are no students yet.</p>
+<% end %>
+</div>
 </div>

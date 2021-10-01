@@ -1,4 +1,5 @@
 class Student < ApplicationRecord
+  include Season
   belongs_to :teacher, optional: true
   has_many :benchmark_results, dependent: :destroy
   has_many :progresses, dependent: :destroy
@@ -34,7 +35,7 @@ class Student < ApplicationRecord
 
   def avg_progress_dibels
     if self.progresses.size > 0 && self.progresses.sum(:dibels) > 0
-        self.progresses.average(:dibels).to_f.round(2)
+      self.progresses.average(:dibels).to_f.round(2)
     else
       "No progress test results"
     end

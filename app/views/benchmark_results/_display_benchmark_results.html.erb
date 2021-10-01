@@ -24,7 +24,7 @@
       <tbody>
         <% @student.benchmark_results.order(:date).reverse_order.each do |q| %>
           <tr>
-            <th class="text-left table-light" scope="row"><%= q.season %></th>
+            <th class="text-left table-light" scope="row"><%= q.get_season(q.date) %></th>
             <td class="text-center border-start" ><%= q.ge %></td>
             <td class="text-center  border-start"><%= q.vocab_ge %></td>
             <td class="text-center "><%= q.reading_comp_ge %></td>
