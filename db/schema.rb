@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_27_184406) do
+ActiveRecord::Schema.define(version: 2021_10_05_153847) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,11 @@ ActiveRecord::Schema.define(version: 2021_09_27_184406) do
     t.integer "student_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "sight_word_ge"
+    t.float "phonemic_decoding_ge"
+    t.float "elison_ge"
+    t.float "blending_ge"
+    t.float "isolation_ge"
   end
 
   create_table "progresses", force: :cascade do |t|
