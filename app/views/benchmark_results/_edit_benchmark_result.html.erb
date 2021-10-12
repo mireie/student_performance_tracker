@@ -3,7 +3,7 @@
     <div class="col-3">
       <h2 class="card-title">Test Information</h2>
       <%= form.label :date %>
-      <%= form.date_select :date, { :discard_day => true,  selected: Date.today, :order => [:month, :year] }, class: "form-select mb-3"%>
+      <%= form.date_select :date, { :discard_day => true, :order => [:month, :year] }, class: "form-select mb-3"%>
       <hr>
       <%= form.submit class: "btn btn-primary d-flex" %>
     </div>
