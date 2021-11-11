@@ -1,16 +1,72 @@
 <% if @student.benchmark_results.any? %>
   <div class="table-responsive-lg">
-    <table class="table mt-3">
+    <table class="table mt-3 benchmarks-table">
       <thead>
+        <tr class="table-light">
+          <th class="table-light text-center" scope="col"></th>
+          <th colspan="1" class="text-center" scope="col">
+            <div><span>TOWSRF</span></div>
+          </th>
+          <th colspan="2" class="text-center" scope="col">
+            <div><span>Gates-MacGinitie</span></div>
+          </th>
+          <th colspan="2" class="text-center" scope="col">
+            <div><span>TOWRE</span></div>
+          </th>
+          <th colspan="5" class="text-center" scope="col">
+            <div><span>DIBELS</span></div>
+          </th>
+          <th colspan="3" class="text-center" scope="col">
+            <div><span>CTOPP</span></div>
+          </th>
+          <th class="text-center" scope="col">
+            <div><span></span></div>
+          </th>
+        </tr>
         <tr class="border-bottom">
           <th class="table-light text-center" scope="col">Date</th>
-          <th class="border-start text-center" scope="col">TOSWRF-2</th>
-          <th class="border-start text-center" scope="col">Gates-MacGinitie</th>
-          <th class="border-start text-center" scope="col">TOWRE</th>
-          <th class="border-start text-center" scope="col">DIBELS</th>
-          <th class="border-start text-center" scope="col">CTOPP</th>
-          <th class="table-light border-start text-center" scope="col">Edit</th>
+          <th class="rotate" scope="col">
+            <div><span>TOWSRF GE</span></div>
+          </th>
+          <th class="rotate table-light" scope="col">
+            <div><span>Vocab GE</span></div>
+          </th>
+          <th class="rotate table-light" scope="col">
+            <div><span>Reading Comp GE</span></div>
+          </th>
+          <th class="rotate" scope="col">
+            <div><span>Sight Word GE</span></div>
+          </th>
+          <th class="rotate" scope="col">
+            <div><span>Phonemic Decode GE</span></div>
+          </th>
+          <th class="rotate table-light" scope="col">
+            <div><span>LNF</span></div>
+          </th>
+          <th class="rotate table-light" scope="col">
+            <div><span>SNF</span></div>
+          </th>
+          <th class="rotate table-light" scope="col">
+            <div><span>ORF Grade Level</span></div>
+          </th>
+          <th class="rotate table-light" scope="col">
+            <div><span>ORF CWPM</span></div>
+          </th>
+          <th class="rotate table-light" scope="col">
+            <div><span>ORF Accuracy</span></div>
+          </th>
+          <th class="rotate" scope="col">
+            <div><span>Elison GE</span></div>
+          </th>
+          <th class="rotate" scope="col">
+            <div><span>Blending GE</span></div>
+          </th>
+          <th class="rotate" scope="col">
+            <div><span>Isolation GE</span></div>
+          </th>
         </tr>
+      </thead>
+      <thead>
       </thead>
       <tbody>
         <% @student.benchmark_results.order(:date).reverse_order.each do |q| %>
@@ -18,112 +74,29 @@
             <th class="text-left table-light py-3" scope="row">
               <%= q.get_season(q.date) %>
             </th>
-            <td class=" border-start" >
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item bm-list">
-                  <div class="row">
-                    <div class="col-auto"><strong>TOWSRF GE:</strong></div>
-                    <div class="col text-end"> <%= q.ge %></span></div>
-                </div>
-              </li>
-            </ul class="list-group list-group-flush">
-          </td>
-          <td class=" border-start">
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item bm-list">
-                <div class="row">
-                  <div class="col-auto"><strong>Vocab GE:</strong></div>
-                  <div class="col text-end"> <%= q.vocab_ge %></div>
-                </div>
-              </li>
-              <li class="list-group-item bm-list">
-                <div class="row">
-                  <div class="col-auto"><strong>Reading Comp GE:</strong></div>
-                  <div class="col text-end"> <%= q.reading_comp_ge %></div>
-                </div>
-              </li>
-            </ul class="list-group list-group-flush">
-          </td>
-          <td class=" border-start ">
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item bm-list">
-                <div class="row">
-                  <div class="col-auto"><strong>Sight Word GE:</strong></div>
-                  <div class="col text-end"> <%= q.sight_word_ge %></div>
-                </div>
-              </li>
-              <li class="list-group-item bm-list">
-                <div class="row">
-                  <div class="col-auto"><strong>Phonemic Decoding GE:</strong></div>
-                  <div class="col text-end"> <%= q.phonemic_decoding_ge %></div>
-                </div>
-              </li>
-            </ul class="list-group list-group-flush">
-          </td>
-          <td class=" border-start">
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item bm-list">
-                <div class="row">
-                  <div class="col-auto"><strong>LNF:</strong></div>
-                  <div class="col text-end"><%= q.lnf %></div>
-                </div>
-              </li>
-              <li class="list-group-item bm-list">
-                <div class="row">
-                  <div class="col-auto"><strong>SNF:</strong></div>
-                  <div class="col text-end"> <%= q.snf %></div>
-                </div>
-              </li>
-              <li class="list-group-item bm-list">
-                <div class="row">
-                  <div class="col-auto"><strong>ORF Grade Level:</strong></div>
-                  <div class="col text-end"> <%= q.orf_grade_lvl %></div>
-                </div>
-              </li>
-              <li class="list-group-item bm-list">
-                <div class="row">
-                  <div class="col-auto"><strong>ORF CWPM:</strong></div>
-                  <div class="col text-end"> <%= q.orf_cwpm %></div>
-                </div>
-              </li>
-              <li class="list-group-item bm-list">
-                <div class="row">
-                  <div class="col-auto"><strong>ORF Accuracy:</strong></div>
-                  <div class="col text-end"> <% if q.orf_accuracy? %>
-                      <%="#{q.orf_accuracy.round(2)}%" %>
-                    <% end%></div>
-                </div>
-              </li>
-            </ul class="list-group list-group-flush">
-          </td>
-          <td class=" border-start">
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item bm-list">
-                <div class="row">
-                  <div class="col-auto"><strong>Elison GE:</strong></div>
-                  <div class="col text-end"> <%= q.elison_ge %></div>
-                </div>
-              </li>
-              <li class="list-group-item bm-list">
-                <div class="row">
-                  <div class="col-auto"><strong>Blending GE:</strong></div>
-                  <div class="col text-end"> <%= q.blending_ge %></div>
-                </div>
-              </li>
-              <li class="list-group-item bm-list">
-                <div class="row">
-                  <div class="col-auto"><strong>Isolation GE:</strong></div>
-                  <div class="col text-end"> <%= q.isolation_ge %></div>
-                </div>
-              </li>
-            </ul class="list-group list-group-flush">
-          </td>
-          <td class="table-light text-center border-start py-3"><%= link_to "Edit", edit_student_benchmark_result_path(@student, q.id) %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-</div>
+            <td class="border-start text-end "><%= q.ge %></td>
+            <td class="border-start text-end table-light"><%= q.vocab_ge %></td>
+            <td class="border-start text-end table-light"><%= q.reading_comp_ge %></td>
+            <td class="border-start text-end "><%= q.sight_word_ge %></td>
+            <td class="border-start text-end"><%= q.phonemic_decoding_ge %></td>
+            <td class="border-start text-end table-light"><%= q.lnf %></td>
+            <td class="border-start text-end table-light"><%= q.snf %></td>
+            <td class="border-start text-end table-light"><%= q.orf_grade_lvl %></td>
+            <td class="border-start text-end table-light"><%= q.orf_cwpm %></td>
+            <td class="border-start text-end table-light">
+              <% if q.orf_accuracy? %>
+                <%="#{q.orf_accuracy.round(2)}%" %>
+              <% end%>
+            </td>
+            <td class="border-start text-end"><%= q.elison_ge %></td>
+            <td class="border-start text-end"><%= q.blending_ge %></td>
+            <td class="border-start text-end"><%= q.isolation_ge %></td>
+            <td class="table-light text-center border-start py-3"><%= link_to "Edit", edit_student_benchmark_result_path(@student, q.id) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 <% else %>
   <p>No results to display.</p>
 <% end %>
