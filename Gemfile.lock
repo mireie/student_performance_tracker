@@ -127,6 +127,8 @@ GEM
     minitest (5.15.0)
     msgpack (1.4.2)
     nio4r (2.5.8)
+    nokogiri (1.13.6-arm64-darwin)
+      racc (~> 1.4)
     nokogiri (1.13.6-x64-mingw32)
       racc (~> 1.4)
     nokogiri (1.13.6-x86_64-darwin)
@@ -258,6 +260,7 @@ GEM
       nokogiri (~> 1.8)
 
 PLATFORMS
+  arm64-darwin-21
   x64-mingw32
   x86_64-darwin-21
   x86_64-linux
@@ -279,7 +282,7 @@ DEPENDENCIES
   pg (>= 0.18, < 2.0)
   pry
   puma (~> 4.3)
-  rails (~> 5.2.6)
+  rails (~> 5.2.7)
   rspec-rails
   sass-rails (~> 5.0)
   shoulda-matchers
@@ -290,7 +293,7 @@ DEPENDENCIES
   web-console (>= 3.3.0)
 
 RUBY VERSION
-   ruby 2.6.6p146
+   ruby 2.7.6p219
 
 BUNDLED WITH
-   2.2.27
+   2.3.9
