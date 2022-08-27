@@ -16,21 +16,11 @@ class Student < ApplicationRecord
   end
 
   def last_benchmark_date
-    date = self.benchmark_results.order(:date)
-    if date.size > 0
-      date.last.date
-    else
-      "N/A"
-    end
+    benchmark_results.order(:date).last.date if benchmark_results.order(:date).present?
   end
 
   def last_progress_date
-    date = self.progresses.order(:date)
-    if date.size > 0
-      date.last.date
-    else
-      "N/A"
-    end
+    progresses.order(:date).last.date if progresses.order(:date).present?
   end
 
   def avg_progress_dibels

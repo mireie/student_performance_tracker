@@ -22,7 +22,7 @@
           </td>
           <td><%= student.grade%></td>
           <td><%= student.get_season(student.last_benchmark_date)%></td>
-          <td><%= student.last_progress_date%></td>
+          <td><%= student.last_progress_date.present? ? student.last_progress_date.to_time.strftime('%m/%d/%Y') : "N/A"%></td>
         </tr>
       <% end %>
     </tbody>
