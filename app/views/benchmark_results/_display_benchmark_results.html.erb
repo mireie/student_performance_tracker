@@ -69,7 +69,7 @@
         <% @student.benchmark_results.order(:date).reverse_order.each do |q| %>
           <tr class="border-bottom">
             <th class="text-left table-light py-3" scope="row">
-              <%= q.get_season(q.date) %>
+              <%= link_to q.get_season(q.date), student_benchmark_result_path(@student, q.id) %>
             </th>
             <td class="border-start text-end "><%= q.ge %></td>
             <td class="border-start text-end table-light"><%= q.vocab_ge %></td>

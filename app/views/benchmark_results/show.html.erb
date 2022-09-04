@@ -1,0 +1,79 @@
+<h1><%= content_for(:title, "#{@student.student_name} | Benchmark") %></h1>
+<h1><%="#{@student.student_name}'s Benchmark for #{@benchmark_result.date}" %></h1>
+
+<div class="row">
+  <div class="col-3">
+    <h2 class="card-title">Test Information</h2>
+    <strong>Date: <%=@benchmark_result.date%></strong>
+    <br>
+    <%= link_to "Edit Test Results", edit_student_benchmark_result_path(@student, @benchmark_result.id) %>
+  </div>
+  <div class="col">
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="card mb-3">
+          <div class="card-body">
+            <h2 class="card-title">TOWSRF</h2>
+            <p class="card-text">
+              <strong>Score: </strong><%=@benchmark_result.ge%>
+          </div>
+        </div>
+        <div class="card mb-3">
+          <div class="card-body">
+            <h2 class="card-title">Gates-MacGinitie</h2>
+            <p class="card-text">
+              <strong>Vocab Ge: </strong><%=@benchmark_result.vocab_ge%>
+              <br>
+              <strong>Reading Comp. Ge: </strong><%=@benchmark_result.reading_comp_ge%>
+          </div>
+        </div>
+        <div class="card mb-3">
+          <div class="card-body">
+            <h2 class="card-title">TOWRE</h2>
+            <p class="card-text">
+              <strong>Sight Word GE: </strong><%=@benchmark_result.sight_word_ge%>
+              <br>
+              <strong>Phonemic Decoding GE: </strong><%=@benchmark_result.phonemic_decoding_ge%>
+          </div>
+        </div>
+         <div class="card mb-3">
+          <div class="card-body">
+            <h2 class="card-title">CTOPP</h2>
+            <p class="card-text">
+              <strong>Elison GE: </strong><%=@benchmark_result.elison_ge%>
+              <br>
+              <strong>Blending GE: </strong><%=@benchmark_result.blending_ge%>
+              <br>
+              <strong>Isolation GE: </strong><%=@benchmark_result.isolation_ge%>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="card mb-3">
+          <div class="card-body">
+            <h2 class="card-title">DIBELS</h2>
+            <strong>Letter Naming Fluency (LNF): </strong><%=@benchmark_result.lnf%>
+            <br>
+            <strong>Sound Naming Fluency (LNF): </strong><%=@benchmark_result.snf%>
+            <hr>
+            <div style="background-color: #eee" class="pt-3 pb-3">
+              <h4>ORF Grade Level</h4>
+              <strong>ORF Grade Level: </strong><%=@benchmark_result.orf_grade_lvl%>
+              <br>
+              <strong>ORF Accuracy: </strong><%=@benchmark_result.orf_cwpm%>
+              <br>
+              <strong>ORF Accuracy: </strong><%=@benchmark_result.orf_accuracy%>
+            </div>
+            <hr>
+            <h4>ORF Instructional Grade Level</h4>
+            <strong>ORF Instructional Grade Level: </strong><%=@benchmark_result.orf_instructional_grade_lvl%>
+            <br>
+            <strong>ORF Instructional CWPM: </strong><%=@benchmark_result.orf_instructional_cwpm%>
+            <br>
+            <strong>ORF Instructional Accuracy: </strong><%=@benchmark_result.orf_instructional_accuracy%>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
