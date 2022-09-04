@@ -6,6 +6,14 @@
       <%= form.date_select :date, { :discard_day => true, :order => [:month, :year] }, class: "form-select mb-3"%>
       <hr>
       <%= form.submit class: "btn btn-primary d-flex" %>
+      <span class="btn btn-danger mt-3">
+        <%= link_to "Delete Benchmark", student_benchmark_result_path(@benchmark_result),
+                  :data => {
+                    :confirm => "Are you sure you want to delete this benchmark? It cannot be recovered.",
+                    :method => "delete"
+                    }
+        %>
+      </span>
     </div>
     <div class="col">
       <div class="row">
