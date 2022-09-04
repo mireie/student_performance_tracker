@@ -13,11 +13,8 @@
           <th colspan="2" class="text-center" scope="col">
             <div><span>TOWRE</span></div>
           </th>
-          <th colspan="5" class="text-center" scope="col">
+          <th colspan="8" class="text-center" scope="col">
             <div><span>DIBELS</span></div>
-          </th>
-          <th colspan="3" class="text-center" scope="col">
-            <div><span>CTOPP</span></div>
           </th>
           <th class="text-center" scope="col">
             <div><span></span></div>
@@ -55,14 +52,14 @@
           <th class="rotate table-light" scope="col">
             <div><span class="benchmark-th-even">ORF Accuracy</span></div>
           </th>
-          <th class="rotate" scope="col">
-            <div><span class="benchmark-th-odd">Elison GE</span></div>
+          <th class="rotate table-light" scope="col">
+            <div><span class="benchmark-th-even">ORF Inst. Grade Level</span></div>
           </th>
-          <th class="rotate" scope="col">
-            <div><span class="benchmark-th-odd">Blending GE</span></div>
+          <th class="rotate table-light" scope="col">
+            <div><span class="benchmark-th-even">ORF Inst. CWPM</span></div>
           </th>
-          <th class="rotate" scope="col">
-            <div><span class="benchmark-th-odd">Isolation GE</span></div>
+          <th class="rotate table-light" scope="col">
+            <div><span class="benchmark-th-even">ORF Inst. Accuracy</span></div>
           </th>
         </tr>
       </thead>
@@ -81,6 +78,13 @@
             <td class="border-start text-end"><%= q.phonemic_decoding_ge %></td>
             <td class="border-start text-end table-light"><%= q.lnf %></td>
             <td class="border-start text-end table-light"><%= q.snf %></td>
+            <td class="border-start text-end table-light"><%= q.orf_grade_lvl %></td>
+            <td class="border-start text-end table-light"><%= q.orf_cwpm %></td>
+            <td class="border-start text-end table-light">
+              <% if q.orf_accuracy? %>
+                <%="#{q.orf_accuracy.round(2)}%" %>
+              <% end%>
+            </td>
             <td class="border-start text-end table-light"><%= q.orf_instructional_grade_lvl %></td>
             <td class="border-start text-end table-light"><%= q.orf_instructional_cwpm %></td>
             <td class="border-start text-end table-light">
@@ -88,9 +92,6 @@
                 <%="#{q.orf_instructional_accuracy.round(2)}%" %>
               <% end%>
             </td>
-            <td class="border-start text-end"><%= q.elison_ge %></td>
-            <td class="border-start text-end"><%= q.blending_ge %></td>
-            <td class="border-start text-end"><%= q.isolation_ge %></td>
             <td class="table-light text-center border-start py-3"><%= link_to "Edit", edit_student_benchmark_result_path(@student, q.id) %></td>
           </tr>
         <% end %>

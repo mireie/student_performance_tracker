@@ -36,25 +36,6 @@
               <%= form.number_field :phonemic_decoding_ge, min: 0, max: 15, step: 0.1, class: "form-control" %>
             </div>
           </div>
-
-        </div>
-        <div class="col-lg-6">
-          <div class="card mb-3">
-            <div class="card-body">
-              <h2 class="card-title">DIBELS</h2>
-              <%= form.label :lnf, 'Letter Naming Fluency (LNF)' %>
-              <%= form.number_field :lnf, min: 0,max: 1000, step: 0.01, class: "form-control"%>
-              <%= form.label :snf, 'Sound Naming Fluency (SNF)' %>
-              <%= form.number_field :snf, min: 0,max: 1000, step: 0.01, class: "form-control"%>
-              <%= form.label :orf_instructional_grade_lvl, 'ORF Grade Level' %>
-              <%= form.number_field :orf_instructional_grade_lvl, min: 0,max: 1000, step: 0.01, class: "form-control"%>
-              <%= form.label :orf_instructional_cwpm, 'ORF CWPM' %>
-              <%= form.number_field :orf_instructional_cwpm, min: 0,max: 1000, step: 0.01, class: "form-control"%>
-              <%= form.label :orf_instructional_accuracy, 'ORF Accuracy' %>
-              <%= form.number_field :orf_instructional_accuracy, min: 0, max: 100, step: 1, class: "form-control" %>
-            </div>
-          </div>
-
           <div class="card mb-3">
             <div class="card-body">
               <h2>CTOPP</h2>
@@ -64,6 +45,35 @@
               <%= form.number_field :blending_ge, min: 0, max: 15, step: 0.1, class: "form-control" %>
               <%= form.label :isolation_ge, 'Isolation GE' %>
               <%= form.number_field :isolation_ge, min: 0, max: 15, step: 0.1, class: "form-control" %>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="card mb-3">
+            <div class="card-body">
+              <h2 class="card-title">DIBELS</h2>
+              <%= form.label :lnf, 'Letter Naming Fluency (LNF)' %>
+              <%= form.number_field :lnf, min: 0,max: 1000, step: 0.01, class: "form-control"%>
+              <%= form.label :snf, 'Sound Naming Fluency (SNF)' %>
+              <%= form.number_field :snf, min: 0,max: 1000, step: 0.01, class: "form-control"%>
+              <hr>
+              <div style="background-color: #eee" class="pt-3 pb-3">
+                <h4>ORF Grade Level</h4>
+                <%= form.label :orf_grade_lvl, 'ORF Grade Level' %>
+                <%= form.number_field :orf_grade_lvl, min: 0,max: 1000, step: 0.01, class: "form-control"%>
+                <%= form.label :orf_cwpm, 'ORF CWPM' %>
+                <%= form.number_field :orf_cwpm, min: 0,max: 1000, step: 0.01, class: "form-control"%>
+                <%= form.label :orf_accuracy, 'ORF Accuracy' %>
+                <%= form.number_field :orf_accuracy, min: 0, max: 100, step: 1, class: "form-control" %>
+              </div>
+              <hr>
+              <h4>ORF Instructional Grade Level</h4>
+              <%= form.label :orf_instructional_grade_lvl, 'ORF Instructional Grade Level' %>
+              <%= form.number_field :orf_instructional_grade_lvl, min: 0,max: 1000, step: 0.01, class: "form-control"%>
+              <%= form.label :orf_instructional_cwpm, 'ORF Instructional CWPM' %>
+              <%= form.number_field :orf_instructional_cwpm, min: 0,max: 1000, step: 0.01, class: "form-control"%>
+              <%= form.label :orf_instructional_accuracy, 'ORF Instructional Accuracy' %>
+              <%= form.number_field :orf_instructional_accuracy, min: 0, max: 100, step: 1, class: "form-control" %>
             </div>
           </div>
         </div>
