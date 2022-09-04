@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_04_163526) do
+ActiveRecord::Schema.define(version: 2022_09_04_164420) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,9 @@ ActiveRecord::Schema.define(version: 2022_09_04_163526) do
     t.float "elison_ge"
     t.float "blending_ge"
     t.float "isolation_ge"
+    t.integer "orf_grade_lvl"
+    t.integer "orf_cwpm"
+    t.decimal "orf_accuracy", precision: 8, scale: 3
   end
 
   create_table "progresses", force: :cascade do |t|
