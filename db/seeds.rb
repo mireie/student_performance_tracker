@@ -59,9 +59,9 @@ class Seed
           reading_comp_ge: rand(5) + rand().round(2),
           lnf: rand(100),
           snf: rand(100),
-          orf_grade_lvl: rand(12),
-          orf_cwpm: rand(200),
-          orf_accuracy: rand(70..100).round(2),
+          orf_instructional_grade_lvl: rand(12),
+          orf_instructional_cwpm: rand(200),
+          orf_instructional_accuracy: rand(70..100).round(2),
           student_id: s.id,
         )
       end

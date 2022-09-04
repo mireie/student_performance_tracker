@@ -12,12 +12,12 @@ describe BenchmarkResult do
   it { should_not allow_value("string").for(:lnf) }
   it { should allow_value(25).for(:snf) }
   it { should_not allow_value("string").for(:snf) }
-  it { should allow_value(25).for(:orf_grade_lvl) }
-  it { should_not allow_value("string").for(:orf_grade_lvl) }
-  it { should allow_value(25).for(:orf_cwpm) }
-  it { should_not allow_value("string").for(:orf_cwpm) }
-  it { should allow_value(25).for(:orf_accuracy) }
-  it { should_not allow_value("string").for(:orf_accuracy) }
+  it { should allow_value(25).for(:orf_instructional_grade_lvl) }
+  it { should_not allow_value("string").for(:orf_instructional_grade_lvl) }
+  it { should allow_value(25).for(:orf_instructional_cwpm) }
+  it { should_not allow_value("string").for(:orf_instructional_cwpm) }
+  it { should allow_value(25).for(:orf_instructional_accuracy) }
+  it { should_not allow_value("string").for(:orf_instructional_accuracy) }
   it { should allow_value(25).for(:student_id) }
 end
 

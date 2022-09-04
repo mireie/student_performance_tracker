@@ -81,11 +81,11 @@
             <td class="border-start text-end"><%= q.phonemic_decoding_ge %></td>
             <td class="border-start text-end table-light"><%= q.lnf %></td>
             <td class="border-start text-end table-light"><%= q.snf %></td>
-            <td class="border-start text-end table-light"><%= q.orf_grade_lvl %></td>
-            <td class="border-start text-end table-light"><%= q.orf_cwpm %></td>
+            <td class="border-start text-end table-light"><%= q.orf_instructional_grade_lvl %></td>
+            <td class="border-start text-end table-light"><%= q.orf_instructional_cwpm %></td>
             <td class="border-start text-end table-light">
-              <% if q.orf_accuracy? %>
-                <%="#{q.orf_accuracy.round(2)}%" %>
+              <% if q.orf_instructional_accuracy? %>
+                <%="#{q.orf_instructional_accuracy.round(2)}%" %>
               <% end%>
             </td>
             <td class="border-start text-end"><%= q.elison_ge %></td>

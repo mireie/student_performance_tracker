@@ -1,4 +1,4 @@
-date,ge,vocab_ge,reading_comp_ge,lnf,snf,orf_grade_lvl,orf_cwpm,orf_accuracy,student_id
+date,ge,vocab_ge,reading_comp_ge,lnf,snf,orf_instructional_grade_lvl,orf_instructional_cwpm,orf_instructional_accuracy,student_id
 2020-01-01,,,,,,5.00,123,96,50
 2019-09-01,4,5.1,3.7,67,62,,93,95,52
 2019-09-01,2,7,8,9,10,13.00,15,16,84
