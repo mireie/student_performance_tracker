@@ -57,6 +57,24 @@ class BenchmarkResultsController < ApplicationController
   private
 
   def benchmark_result_params
-    params.require(:benchmark_result).permit(:date, :ge, :vocab_ge, :reading_comp_ge, :lnf, :snf, :orf_instructional_grade_lvl, :orf_instructional_cwpm, :orf_instructional_accuracy,:sight_word_ge, :phonemic_decoding_ge, :elison_ge, :blending_ge, :isolation_ge)
+    params.require(:benchmark_result).permit(
+      :date,
+      :ge,
+      :vocab_ge,
+      :reading_comp_ge,
+      :lnf,
+      :snf,
+      :orf_grade_lvl,
+      :orf_cwpm,
+      :orf_accuracy,
+      :orf_instructional_grade_lvl,
+      :orf_instructional_cwpm,
+      :orf_instructional_accuracy,
+      :sight_word_ge,
+      :phonemic_decoding_ge,
+      :elison_ge,
+      :blending_ge,
+      :isolation_ge
+    )
   end
 end
