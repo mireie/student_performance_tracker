@@ -9,7 +9,7 @@ class StudentsController < ApplicationController
     if params[:query]
       students = Student.search(params[:query])
     else
-      students = Student.is_active
+      students = Student.includes(:benchmark_results, :progresses).is_active
     end
     @students = students.page(params[:page]).per(50)
     @teachers = Teacher.all
