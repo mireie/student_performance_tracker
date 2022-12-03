@@ -295,7 +295,6 @@ DEPENDENCIES
   chartkick
   coffee-rails (~> 4.2)
   devise
-  execjs
   faker
   groupdate
   jbuilder (~> 2.5)
