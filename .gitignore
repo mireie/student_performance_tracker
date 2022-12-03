@@ -31,3 +31,6 @@
 
 # Ignore Dumps
 *.dump*
+
+# Ignore .env
+.env
