@@ -308,7 +308,7 @@ DEPENDENCIES
   pg (>= 0.18, < 2.0)
   pry
   puma (~> 5.6)
-  rails (~> 6.1.7.4)
+  rails (~> 6.1.7)
   rspec-rails
   sass-rails (~> 5.0)
   shoulda-matchers
