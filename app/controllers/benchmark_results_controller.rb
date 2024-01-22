@@ -20,7 +20,8 @@ class BenchmarkResultsController < ApplicationController
       flash[:notice] = "Benchmark score successfully added!"
       redirect_to student_path(@student)
     else
-      format.html { render :new, status: :unprocessable_entity }
+      flash[:alert] = @benchmark_result.errors.full_messages.to_sentence
+      format.html { render :new }
     end
   end
 

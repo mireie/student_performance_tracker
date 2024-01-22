@@ -4,7 +4,7 @@
     <tbody>
       <tr>
         <td><%= form.label :date %></td>
-        <td><%= form.date_field :date, class: "form-control" %></td>
+        <td><%= form.date_field :date, max: Date.today + 1.year, class: "form-control" %></td>
       </tr>
       <tr>
         <td><%= form.label :grade %></td>

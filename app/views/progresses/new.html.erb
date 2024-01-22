@@ -4,7 +4,7 @@
     <div id="error_explanation" class="alert-danger">
       <h2><%= pluralize(@progress.errors.count, "error") %> prohibited this student from being saved:</h2>
       <ul>
-        <% student.errors.full_messages.each do |message| %>
+        <% @progress.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
       </ul>

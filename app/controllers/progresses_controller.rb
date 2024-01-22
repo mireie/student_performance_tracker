@@ -20,7 +20,8 @@ class ProgressesController < ApplicationController
       if @progress.save
         format.html { redirect_to @student, notice: "Progress Score was successfully created." }
       else
-        format.html { render :new, status: :unprocessable_entity }
+        flash[:alert] = @progress.errors.full_messages.to_sentence
+        format.html { render :new }
       end
     end
   end
@@ -43,6 +44,7 @@ class ProgressesController < ApplicationController
       flash[:notice] = "DIBELS score successfully updated!"
       redirect_to student_progresses_path(@progress.student)
     else
+      flash[:alert] = @progress.errors.full_messages.to_sentence
       @student = Student.find(params[:student_id])
       render :edit
     end
@@ -59,5 +61,5 @@ class ProgressesController < ApplicationController
     def progress_params
       params.require(:progress).permit(:date, :grade, :dibels, :accuracy)
     end
-  
+
 end
