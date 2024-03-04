@@ -62,4 +62,28 @@ namespace :db do
     end
     puts "Exported CSV"
   end
+  task :export_benchmarks => :environment do
+    Rails.application.eager_load!
+    file = Rails.root.join("tmp/export/export-benchmarks-#{Time.now.to_i}.csv")
+
+    CSV.open(file, "w") do |csv|
+      csv << BenchmarkResult.attribute_names
+      BenchmarkResult.find_each do |benchmark_result|
+        csv << benchmark_result.attributes.values
+      end
+    end
+    puts "Exported CSV"
+  end
+  task :export_progresses => :environment do
+    Rails.application.eager_load!
+    file = Rails.root.join("tmp/export/export-progresses-#{Time.now.to_i}.csv")
+
+    CSV.open(file, "w") do |csv|
+      csv << Progress.attribute_names
+      Progress.find_each do |progress|
+        csv << progress.attributes.values
+      end
+    end
+    puts "Exported CSV"
+  end
 end
