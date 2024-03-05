@@ -28,6 +28,7 @@ namespace :db do
     end
     puts "Students Created: #{counter}"
   end
+
   task :import_benchmarks => :environment do
     filename = "app/import/test-benchmark-results-import.csv"
     counter = 0
@@ -39,6 +40,7 @@ namespace :db do
     end
     puts "Benchmark Scores Created: #{counter}"
   end
+
   task :import_progresses => :environment do
     filename = "app/import/test-progresses-import.csv"
     counter = 0
@@ -50,7 +52,9 @@ namespace :db do
     end
     puts "Progress Scores Created: #{counter}"
   end
+
   task :export_students => :environment do
+    create_export_directory
     Rails.application.eager_load!
     file = Rails.root.join("tmp/export/export-#{Time.now.to_i}.csv")
 
@@ -62,7 +66,9 @@ namespace :db do
     end
     puts "Exported CSV"
   end
+
   task :export_benchmarks => :environment do
+    create_export_directory
     Rails.application.eager_load!
     file = Rails.root.join("tmp/export/export-benchmarks-#{Time.now.to_i}.csv")
 
@@ -74,7 +80,9 @@ namespace :db do
     end
     puts "Exported CSV"
   end
+
   task :export_progresses => :environment do
+    create_export_directory
     Rails.application.eager_load!
     file = Rails.root.join("tmp/export/export-progresses-#{Time.now.to_i}.csv")
 
@@ -86,4 +94,8 @@ namespace :db do
     end
     puts "Exported CSV"
   end
+end
+
+def create_export_directory
+  FileUtils.mkdir_p("tmp/export")
 end
