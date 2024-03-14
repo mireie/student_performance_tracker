@@ -12,14 +12,15 @@
       <ul>
         <li><%= link_to "View #{@students.size} active students", '/students' %></li>
         <li><%= link_to "View #{@teachers.size} active teachers", '/teachers' %></li>
-        <% if current_user && current_user.admin %>
-          <li><%= link_to "{Admin} - View #{@users.size} active users", '/teachers' %></li>
-        <%end%>
       </ul>
-      <% if current_user && current_user.admin %>
+      <% if current_user&.admin %>
+      <hr>
+      <h2>Admin Tools</h2>
+      <ul>
+        <li><%= link_to "{Admin} - View #{@users.size} active users", '/teachers' %></li>
+        <li><a href = "" id="exportButton">{Admin} - Export Benchmarks</a></li>
+      </ul>
         <%if @inactive_users.any?%>
-          <hr>
-          <h2>Admin Tools</h2>
           <strong><%= link_to 'There are inactive users!', '/user-admin/'%></strong>
           <ul>
             <% @inactive_users.each do |user| %>
@@ -39,3 +40,18 @@
     </div>
   </div>
 <% end %>
+
+<script>
+  document.getElementById('exportButton').addEventListener('click', function() {
+    fetch(' <%= export_benchmarks_path %>')
+      .then(response => response.blob())
+      .then(blob => {
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'benchmarks.csv';
+        a.click();
+      })
+      .catch(console.error);
+  });
+</script>
