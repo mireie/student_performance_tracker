@@ -96,9 +96,9 @@ namespace :db do
   end
 
   task :brm => :environment do
-    FileUtils.mkdir_p("app/public/export")
+    FileUtils.mkdir_p("public/exports")
     Rails.application.eager_load!
-    file = Rails.root.join("app/public/export/export-brm-results-#{Time.now.to_i}.csv")
+    file = Rails.root.join("public/exports/export-brm-results-#{Time.now.to_i}.csv")
     headers = [
       "student_id",
       "date",
