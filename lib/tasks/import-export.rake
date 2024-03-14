@@ -94,6 +94,38 @@ namespace :db do
     end
     puts "Exported CSV"
   end
+
+  task :brm => :environment do
+    create_export_directory
+    Rails.application.eager_load!
+    file = Rails.root.join("tmp/export/export-brm-results-#{Time.now.to_i}.csv")
+    headers = [
+      "student_id",
+      "date",
+      "measure",
+      "score",
+      "description",
+    ]
+
+    CSV.open(file, "w") do |csv|
+      csv << headers
+      measures = [:lnf, :snf, :orf_cwpm, :orf_accuracy]
+      BenchmarkResult.find_each do |benchmark_result|
+        measures.each do |measure|
+          if benchmark_result.send(measure)
+            data_to_add = []
+            data_to_add << benchmark_result.student_id
+            data_to_add << benchmark_result.date.to_s
+            data_to_add << measure.to_s
+            data_to_add << benchmark_result.send(measure)
+            data_to_add << "Grade Level: #{benchmark_result.orf_grade_lvl}"
+            csv << data_to_add
+          end
+        end
+      end
+    end
+    puts "Exported CSV #"
+  end
 end
 
 def create_export_directory
