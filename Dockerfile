@@ -41,10 +41,6 @@ RUN bundle install && \
     bundle exec bootsnap precompile --gemfile && \
     rm -rf ~/.bundle/ "${BUNDLE_PATH}"/ruby/*/cache "${BUNDLE_PATH}"/ruby/*/bundler/gems/*/.git
 
-# Install node modules
-COPY --link package.json ./
-RUN npm install
-
 # Copy application code
 COPY --link . .
 
