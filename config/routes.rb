@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   devise_for :users
   match 'users/:id' => 'users#destroy', :via => :delete, :as => :admin_destroy_user

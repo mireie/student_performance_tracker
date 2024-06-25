@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Student < ApplicationRecord
   include Season
   belongs_to :teacher, optional: true

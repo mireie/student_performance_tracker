@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class BenchmarkResultsController < ApplicationController
   before_action :active_user
 

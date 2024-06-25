@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class BenchmarkResult < ApplicationRecord
   include Season
   belongs_to :student

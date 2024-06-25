@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ProgressesController < ApplicationController
   before_action :active_user
 
