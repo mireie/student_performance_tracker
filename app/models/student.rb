@@ -2,7 +2,7 @@
 
 class Student < ApplicationRecord
   include Season
-  belongs_to :teacher, optional: true
+  belongs_to :teacher, counter_cache: true, optional: true
   has_many :benchmark_results, dependent: :destroy
   has_many :progresses, dependent: :destroy
 

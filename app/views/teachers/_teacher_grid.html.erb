@@ -1,4 +1,4 @@
-<div class="table-responseive">
+<div class="table-responsive">
   <table class="table table-striped mt-3">
     <thead>
       <tr>
@@ -10,7 +10,7 @@
       <% @teachers.order(:last_name).each do |teacher| %>
         <tr>
           <th scope="row" class="grid-col-1"><%= link_to "#{ teacher.last_name}, #{teacher.first_name}", teacher_path(teacher)%></th>
-          <td><%= pluralize(teacher.students.size, 'Student')%></td>
+          <td><%= pluralize(teacher.students_count, 'Student')%></td>
         </tr>
       <% end %>
     </tbody>

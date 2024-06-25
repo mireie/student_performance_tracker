@@ -8,17 +8,17 @@ class StudentsController < ApplicationController
 
   # GET /students or /students.json
   def index
-    if params[:query]
-      students = Student.search(params[:query])
+    students = if params[:query]
+      Student.search(params[:query])
     else
-      students = Student.includes(:benchmark_results, :progresses).is_active
+      Student.is_active
     end
-    @students = students.page(params[:page]).per(50)
+    @students = students.includes(:teacher).order(:last_name).page(params[:page]).per(50)
     @teachers = Teacher.all
     render :index
   end
 
-  def search 
+  def search
     Student.search(search_params)
   end
 

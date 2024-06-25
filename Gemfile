@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "3.0.4"
+ruby "3.2.3"
 
 gem "chartkick"
 
@@ -39,7 +39,8 @@ gem "faker"
 
 gem "bootsnap", ">= 1.1.0", require: false
 gem "jquery-rails"
-gem "bootstrap", "~> 5.0.1"
+gem 'bootstrap', '~> 5.3.3'
+gem 'dartsass-sprockets'
 gem 'kaminari'
 
 group :development, :test do
@@ -52,6 +53,13 @@ end
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem "web-console", ">= 3.3.0"
+  gem "bullet"
+
+  # Used together
+  gem "derailed_benchmarks"
+  gem "memory_profiler"
+  gem "rack-mini-profiler"
+  gem "stackprof"
 end
 
 group :test do
