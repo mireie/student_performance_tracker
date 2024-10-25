@@ -1,26 +1,24 @@
-<%= content_for(:title, "#{@teacher.full_name}") %>
-<div class="row" style="justify-content: space-between">
+<%= content_for(:title, @teacher.full_name) %>
+<div class="row justify-content-between">
   <div class="col">
-    <h1><%= @teacher.full_name%>
-      <%unless @teacher.active?%>
-        <%= " (Inactive)"%>
-      <%end%>
+    <h1>
+      <%= @teacher.full_name %>
+      <%= " (Inactive)" unless @teacher.active? %>
     </h1>
   </div>
   <div class="col text-end">
-    <p><%= link_to 'Edit Teacher', edit_teacher_path(@teacher), class: "btn btn-warning" %></p>
-    <% if current_user && current_user.admin?%>
-      <p><%= link_to "Delete Teacher", teacher_path( @teacher),
-                         :data => {:confirm => "You sure?",
-                                   :method => "delete"}, class: "btn btn-danger" %></p>
+    <%= link_to 'Edit Teacher', edit_teacher_path(@teacher), class: "btn btn-warning mb-2" %>
+    <% if current_user&.admin? %>
+      <%= link_to "Delete Teacher", teacher_path(@teacher),
+                  data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
+                  class: "btn btn-danger" %>
     <% end %>
   </div>
 </div>
 <% if @teacher.students.any? %>
   <%= paginate @students %>
-  <%= render :partial => "/students/student_grid", :locals => {@teacher.students => @students} %>
+  <%= render partial: "students/student_grid", locals: { students: @students } %>
   <%= paginate @students %>
-</div>
 <% else %>
   <p>There are no students assigned to this teacher</p>
 <% end %>

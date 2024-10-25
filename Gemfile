@@ -7,11 +7,11 @@ gem "chartkick"
 
 gem "groupdate"
 
-gem "rails", "~> 6.1"
+gem "rails", "~> 7.2"
 # Use postgresql as the database for Active Record
 gem "pg", ">= 0.18", "< 2.0"
 # Use Puma as the app server
-gem "puma", "~> 5.6"
+gem "puma", "~> 6.4"
 # Use SCSS for stylesheets
 gem "sass-rails", "~> 5.0"
 # Use Uglifier as compressor for JavaScript assets
@@ -37,7 +37,7 @@ gem "faker"
 
 # Reduces boot times through caching; required in config/boot.rb
 
-gem "bootsnap", ">= 1.1.0", require: false
+gem "bootsnap", ">= 1.18", require: false
 gem "jquery-rails"
 gem 'bootstrap', '~> 5.3.3'
 gem 'dartsass-sprockets'

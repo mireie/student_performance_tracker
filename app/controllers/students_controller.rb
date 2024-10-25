@@ -8,12 +8,7 @@ class StudentsController < ApplicationController
 
   # GET /students or /students.json
   def index
-    students = if params[:query]
-      Student.search(params[:query])
-    else
-      Student.is_active
-    end
-    @students = students.includes(:teacher).order(:last_name).page(params[:page]).per(50)
+    @students = fetch_and_paginate_students
     @teachers = Teacher.all
     render :index
   end
