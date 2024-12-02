@@ -2,27 +2,25 @@
   <table class="table table-striped mt-3">
     <thead>
       <tr>
-        <th scope="col">Student</th>
-        <th scope="col">Teacher</th>
-        <th scope="col">Grade</th>
-        <th scope="col">Last Benchmark</th>
-        <th scope="col">Last Progress Check</th>
+        <% ["Student", "Teacher", "Grade", "Last Benchmark", "Last Progress Check"].each do |header| %>
+          <th scope="col"><%= header %></th>
+        <% end %>
       </tr>
     </thead>
     <tbody>
       <% @students.order(:last_name).each do |student| %>
         <tr>
-          <th scope="row" class="grid-col-1"><%= link_to "#{student.last_name}, #{student.first_name}", student_path(student)%></th>
+          <th scope="row" class="grid-col-1">
+            <%= link_to "#{student.last_name}, #{student.first_name}", student_path(student) %>
+          </th>
           <td class="grid-col-2">
-            <% if student.teacher %>
-              <%=link_to student.teacher.full_name, teacher_path(student.teacher)%>
-            <%else%>
-              N/A
-            <%end%>
+            <%= student.teacher ? link_to(student.teacher.full_name, teacher_path(student.teacher)) : "N/A" %>
           </td>
-          <td><%= student.grade%></td>
-          <td><%= student.get_season(student.last_benchmark_date)%></td>
-          <td><%= student.last_progress_date.present? ? student.last_progress_date.to_time.strftime('%m/%d/%Y') : "N/A"%></td>
+          <td><%= student.grade %></td>
+          <td><%= student.get_season(student.last_benchmark_date) %></td>
+          <td>
+            <%= student.last_progress_date.present? ? student.last_progress_date.to_time.strftime('%m/%d/%Y') : "N/A" %>
+          </td>
         </tr>
       <% end %>
     </tbody>

@@ -10,10 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_06_25_224056) do
-
+ActiveRecord::Schema[8.0].define(version: 2024_12_02_170533) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+  enable_extension "pg_catalog.plpgsql"
 
   create_table "benchmark_results", force: :cascade do |t|
     t.date "date"
@@ -26,8 +25,8 @@ ActiveRecord::Schema.define(version: 2024_06_25_224056) do
     t.integer "orf_instructional_cwpm"
     t.decimal "orf_instructional_accuracy", precision: 8, scale: 3
     t.integer "student_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.float "sight_word_ge"
     t.float "phonemic_decoding_ge"
     t.float "elison_ge"
@@ -44,15 +43,15 @@ ActiveRecord::Schema.define(version: 2024_06_25_224056) do
     t.float "dibels"
     t.float "accuracy"
     t.integer "student_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
   end
 
   create_table "students", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.integer "teacher_id"
     t.boolean "active", default: true
     t.integer "grade"
@@ -61,8 +60,8 @@ ActiveRecord::Schema.define(version: 2024_06_25_224056) do
   create_table "teachers", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.boolean "active", default: true
     t.integer "students_count", default: 0, null: false
   end
@@ -73,10 +72,10 @@ ActiveRecord::Schema.define(version: 2024_06_25_224056) do
     t.string "first_name"
     t.string "last_name"
     t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "reset_password_sent_at", precision: nil
+    t.datetime "remember_created_at", precision: nil
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.boolean "admin", default: false
     t.boolean "active", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
