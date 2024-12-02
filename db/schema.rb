@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_12_02_170533) do
+ActiveRecord::Schema[8.0].define(version: 2024_12_02_180000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -35,6 +35,7 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_02_170533) do
     t.integer "orf_grade_lvl"
     t.integer "orf_cwpm"
     t.decimal "orf_accuracy", precision: 8, scale: 3
+    t.index ["student_id"], name: "index_benchmark_results_on_student_id"
   end
 
   create_table "progresses", force: :cascade do |t|
@@ -45,6 +46,7 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_02_170533) do
     t.integer "student_id"
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
+    t.index ["student_id"], name: "index_progresses_on_student_id"
   end
 
   create_table "students", force: :cascade do |t|
@@ -55,6 +57,11 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_02_170533) do
     t.integer "teacher_id"
     t.boolean "active", default: true
     t.integer "grade"
+    t.date "cached_last_benchmark_date"
+    t.date "cached_last_progress_date"
+    t.index ["cached_last_benchmark_date"], name: "index_students_on_cached_last_benchmark_date"
+    t.index ["cached_last_progress_date"], name: "index_students_on_cached_last_progress_date"
+    t.index ["teacher_id"], name: "index_students_on_teacher_id"
   end
 
   create_table "teachers", force: :cascade do |t|

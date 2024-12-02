@@ -8,7 +8,14 @@ class StudentsController < ApplicationController
 
   # GET /students or /students.json
   def index
-    @students = load_students.includes(:teacher).order(:last_name).page(params[:page]).per(50)
+    @students = if params[:search].present?
+                  Student.search(params[:search])
+                else
+                  Student.all
+                end.includes(:teacher, :benchmark_results, :progresses)
+                  .order(:last_name)
+                  .page(params[:page])
+                  .per(50)
     @teachers = Teacher.all
     render :index
   end
@@ -76,14 +83,6 @@ class StudentsController < ApplicationController
   end
 
   private
-
-  def load_students
-    if params[:query]
-      Student.search(params[:query])
-    else
-      Student.is_active
-    end
-  end
 
   # Use callbacks to share common setup or constraints between actions.
   def set_student

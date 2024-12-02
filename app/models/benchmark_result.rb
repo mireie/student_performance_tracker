@@ -24,11 +24,20 @@ class BenchmarkResult < ApplicationRecord
 
   validate :date_is_reasonable
 
+  after_save :update_student_benchmark_date
+  after_destroy :update_student_benchmark_date
+
+  private
+
   def date_is_reasonable
     max_date = Date.today + 1.year
     if date.present? && date > max_date
       errors.add(:date, "Date must be before one year from now: #{max_date}")
     end
+  end
+
+  def update_student_benchmark_date
+    student.update_cached_benchmark_date if student
   end
 
 end
