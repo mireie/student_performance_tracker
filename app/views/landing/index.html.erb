@@ -1,49 +1,49 @@
-<% unless current_user %>
+<% if current_user %>
+  <% if !current_user.active? %>
+    <p>Your account has not yet been activated. Contact an administrator to activate your account.</p>
+  <% else %>
+    <div class="row">
+      <div class="col">
+        <h2>Quick Links</h2>
+        <ul>
+          <li><%= link_to "View #{@students.size} active students", '/students' %></li>
+          <li><%= link_to "View #{@teachers.size} active teachers", '/teachers' %></li>
+        </ul>
+        <% if current_user.admin? %>
+          <hr>
+          <h2>Admin Tools</h2>
+          <ul>
+            <li><%= link_to "{Admin} - View #{@users.size} active users", '/teachers' %></li>
+            <li><a href="#" id="exportButton">{Admin} - Export Benchmarks</a></li>
+          </ul>
+          <% if @inactive_users.any? %>
+            <strong><%= link_to 'There are inactive users!', '/user-admin/' %></strong>
+            <ul>
+              <% @inactive_users.each do |user| %>
+                <li><%= user.email %></li>
+              <% end %>
+            </ul>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="col">
+        <% if @teachers.any? %>
+          <h2>Teachers</h2>
+          <%= render partial: "teachers/teacher_grid", locals: { teachers: @teachers } %>
+        <% else %>
+          <p>There are no teachers yet.</p>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+<% else %>
   <%= link_to 'Please Sign In', '/users/sign_in', class: "btn btn-primary" %>
 <% end %>
 <h1>Student Progress Tracker</h1>
 <p>Welcome to the student progress tracker.</p>
-<% if current_user && !current_user.active?%>
-  <p>Your account has not yet been activated. Contact an administrator to activate your account.</p>
-<% elsif current_user %>
-  <div class="row">
-    <div class="col">
-      <h2>Quick Links</h2>
-      <ul>
-        <li><%= link_to "View #{@students.size} active students", '/students' %></li>
-        <li><%= link_to "View #{@teachers.size} active teachers", '/teachers' %></li>
-      </ul>
-      <% if current_user&.admin %>
-      <hr>
-      <h2>Admin Tools</h2>
-      <ul>
-        <li><%= link_to "{Admin} - View #{@users.size} active users", '/teachers' %></li>
-        <li><a href = "" id="exportButton">{Admin} - Export Benchmarks</a></li>
-      </ul>
-        <%if @inactive_users.any?%>
-          <strong><%= link_to 'There are inactive users!', '/user-admin/'%></strong>
-          <ul>
-            <% @inactive_users.each do |user| %>
-              <li><%=user.email%></li>
-            <%end%>
-          </ul>
-        <%end%>
-      <%end%>
-    </div>
-    <div class="col">
-      <% if @teachers.any? %>
-        <h2>Teachers</h2>
-        <%= render :partial => "./teachers/teacher_grid", :locals => {:teachers => @teachers} %>
-      <% else%>
-        <p>There are no teachers yet.</p>
-      <% end %>
-    </div>
-  </div>
-<% end %>
-
 <script>
   document.getElementById('exportButton').addEventListener('click', function() {
-    fetch(' <%= export_benchmarks_path %>')
+    fetch('<%= export_benchmarks_path %>')
       .then(response => response.blob())
       .then(blob => {
         const url = window.URL.createObjectURL(blob);

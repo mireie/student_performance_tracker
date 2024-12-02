@@ -18,11 +18,11 @@ class Student < ApplicationRecord
   end
 
   def last_benchmark_date
-    benchmark_results.order(:date).last.date if benchmark_results.order(:date).present?
+    cached_last_benchmark_date || update_cached_benchmark_date
   end
 
   def last_progress_date
-    progresses.order(:date).last.date if progresses.order(:date).present?
+    cached_last_progress_date || update_cached_progress_date
   end
 
   def avg_progress_dibels
@@ -48,10 +48,37 @@ class Student < ApplicationRecord
 
   before_save(:capitalize_name)
 
+  after_save :update_cached_dates
+
+  def update_cached_benchmark_date
+    latest_date = benchmark_results.select(:date).order(date: :desc).limit(1).pluck(:date).first
+    update_column(:cached_last_benchmark_date, latest_date)
+    latest_date
+  end
+
+  def update_cached_progress_date
+    latest_date = progresses.select(:date).order(date: :desc).limit(1).pluck(:date).first
+    update_column(:cached_last_progress_date, latest_date)
+    latest_date
+  end
+
   private
 
   def capitalize_name
     self.first_name = self.first_name.capitalize
     self.last_name = self.last_name.capitalize
+  end
+
+  def update_cached_dates
+    update_cached_benchmark_date
+    update_cached_progress_date
+  end
+
+  def touch_last_benchmark_date(_record)
+    update_cached_benchmark_date
+  end
+
+  def touch_last_progress_date(_record)
+    update_cached_progress_date
   end
 end

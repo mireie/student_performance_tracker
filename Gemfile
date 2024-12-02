@@ -7,7 +7,7 @@ gem "chartkick"
 
 gem "groupdate"
 
-gem "rails", "~> 7.2"
+gem "rails", "~> 8.0.0"
 # Use postgresql as the database for Active Record
 gem "pg", ">= 0.18", "< 2.0"
 # Use Puma as the app server
@@ -72,3 +72,5 @@ end
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem "dockerfile-rails", ">= 1.6", :group => :development
+
+gem "bugsnag", "~> 6.27"
