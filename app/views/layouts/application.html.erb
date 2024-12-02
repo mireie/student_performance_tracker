@@ -1,29 +1,27 @@
 <!DOCTYPE html>
 <html class="h-100">
   <head>
-    <title><%= (yield(:title) + " | " unless yield(:title).blank?).to_s + "SPT" %></title>
+    <title><%= page_title %></title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/moment@2.27.0"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-moment@0.1.1"></script>
+    <%= include_external_scripts %>
   </head>
   <body class="d-flex flex-column h-100">
     <main class="flex-shrink-0">
       <div class="container">
-        <%= render "layouts/header"%>
+        <%= render "layouts/header" %>
         <%= render "layouts/alerts" unless flash.empty? %>
-          <div class="row">
-            <div class="col mt-3">
-              <%= yield %>
-            </div>
+        <div class="row">
+          <div class="col mt-3">
+            <%= yield %>
           </div>
         </div>
-      </main>
-      <%= render "layouts/footer"%>
-    </body>
-  </html>
+      </div>
+    </main>
+    <%= render "layouts/footer" %>
+  </body>
+</html>
